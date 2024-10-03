@@ -14,6 +14,13 @@ function App() {
     useEffect(() => {
         // Логика изменения цвета фона в зависимости от маршрута
         switch (location.pathname) {
+            case '/':
+                document.body.style.backgroundImage = `url('./img/MainBackground.jpg')`;
+                document.body.style.backgroundSize = '100% auto'; // Ширина на 100%, высота пропорциональна
+                document.body.style.backgroundPosition = 'top'; // Привязка к верхней части
+                document.body.style.backgroundRepeat = 'no-repeat'; // Без повторений
+              //  document.body.style.minHeight = '5100px';
+                break;
             case '/multfilm':
                 document.body.style.background = 'linear-gradient(180deg, #C5E5FF 0%, #CDBEFF 100%)';
                 break;
