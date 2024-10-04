@@ -67,15 +67,17 @@ const Main = () => {
                     </div>
                     <div className={'blockBottom'}>
                         <div className={'blockBottom_block'}>
-                            <Link to='/'>
-                                <img src="./img/rightBlock.png" alt=""/>
+                            <Link to='/songs'>
+                                <img src="./img/leftBlock.png" alt=""/>
                             </Link>
                         </div>
                         <div className={'blockBottom_block'}>
                             <img src="./img/Amina.png" alt=""/>
                         </div>
                         <div className={'blockBottom_block'}>
-                            <img src="./img/leftBlock.png" alt=""/>
+                            <Link to='/multfilm'>
+                                <img src="./img/rightBlock.png" alt=""/>
+                            </Link>
                         </div>
                     </div>
                 </div>
