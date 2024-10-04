@@ -67,13 +67,15 @@ const Main = () => {
                     </div>
                     <div className={'blockBottom'}>
                         <div className={'blockBottom_block'}>
-                            <img src="./img/leftBlock.png" alt=""/>
+                            <Link to='/'>
+                                <img src="./img/rightBlock.png" alt=""/>
+                            </Link>
                         </div>
                         <div className={'blockBottom_block'}>
                             <img src="./img/Amina.png" alt=""/>
                         </div>
                         <div className={'blockBottom_block'}>
-                            <img src="./img/rightBlock.png" alt=""/>
+                            <img src="./img/leftBlock.png" alt=""/>
                         </div>
                     </div>
                 </div>

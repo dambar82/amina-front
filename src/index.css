@@ -1346,7 +1346,7 @@ body {
 }
 
 .pageContent {
-  padding-top: 48px;
+  padding: 48px 0;
 }
 
 .mulfilm_grid {
@@ -1449,6 +1449,15 @@ video {
   column-gap: 32px;
 }
 
+.newsItem_text {
+  /*max-height: 200px;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
 .newsItem_image {
   height: 250px;
   border-radius: 16px;
@@ -1457,6 +1466,7 @@ video {
 .newsItem_image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .newsItem_date {
@@ -1504,6 +1514,15 @@ video {
   font-style: normal !important;
   display: block !important;
   white-space: normal !important;
+}
+
+.readFull {
+  cursor: pointer;
+  color: #FF8FC4;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 .bookContent {
@@ -1765,21 +1784,22 @@ a {
 }
 
 .mainContent {
+  position: relative;
   width: 100%;
-  min-height: 5020px;
-  max-height: 5020px;
+  /*min-height: 5020px;*/
+  /*max-height: 5020px;*/
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   row-gap: 10vh;
 }
 
-@media screen and (max-width: 1600px) {
-  .mainContent {
-    min-height: 3995px;
-    max-height: 3995px;
-  }
-}
+/*@media screen and (max-width: 1600px) {*/
+/*  .mainContent {*/
+/*    min-height: 3995px;*/
+/*    max-height: 3995px;*/
+/*  }*/
+/*}*/
 
 .mainContent_blockPink {
   height: 100vh;
@@ -1791,6 +1811,7 @@ a {
 .amina_pic {
   margin: 0 auto;
   width: 60%;
+  height: 90%;
 }
 
 .amina_pic img {
@@ -1847,7 +1868,7 @@ a {
 }
 
 .mainContent_blockGreen {
-  padding: 8vh 0;
+  padding: 15vh 0 5vh 0;
   display: flex;
   row-gap: 5vh;
   flex-direction: column;
@@ -1957,7 +1978,7 @@ p {
 .mainContent_blockPurpleSecond {
   height: 120vh;
   width: 100%;
-  padding: 20vh 0 0 0;
+  padding: 30vh 0 0 0;
   display: flex;
   row-gap: 5vh;
   flex-direction: column;
@@ -1970,17 +1991,19 @@ p {
 }
 
 .main_footer {
+  height: 30vh;
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
   text-align: center;
   color: white;
-  row-gap: 32px;
   margin: 0 auto;
   width: 60%;
   margin-bottom: auto;
 }
 
 .main_footer p {
+  height: auto;
   font-size: 16px;
   font-size: 20px;
   font-family: 'Ubuntu', sans-serif;

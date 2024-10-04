@@ -2,24 +2,18 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
 const News = () => {
-
-    const url = 'https://api.multfilm.tatar/api/'
-
+    const url = 'https://api.multfilm.tatar/api/';
     const [news, setNews] = useState([]);
-
+    const [expandedNews, setExpandedNews] = useState({});
     const colors = ['#94EBFF', '#FF7DB9', '#CFA0FF', '#B9FF43'];
 
     function formatDate(inputDate) {
-
         const parts = inputDate.split('-');
-
         if (parts.length !== 3) {
             throw new Error("Неверный формат даты. Ожидался формат DD-MM-YYYY.");
         }
-
         const day = parts[0];
         const month = parts[1];
-
         return `${day}.${month}`;
     }
 
@@ -27,12 +21,17 @@ const News = () => {
         const getNews = async () => {
             const response = await axios.get(`${url}amina/news`);
             setNews(response.data.data);
-
-            console.log(response.data.data)
-        }
+            console.log(response.data.data);
+        };
         getNews();
-    }, [])
+    }, []);
 
+    const toggleExpansion = (index) => {
+        setExpandedNews((prevState) => ({
+            ...prevState,
+            [index]: !prevState[index],
+        }));
+    };
 
     return (
         <div className={'pageWrapper'}>
@@ -43,7 +42,7 @@ const News = () => {
                 <div className={'newsContent'}>
                     {
                         news.map((newsItem, index) => (
-                            <div className={'newsItem'}>
+                            <div className={'newsItem'} key={index}>
                                 <div
                                     className={'newsItem_date'}
                                     style={{ backgroundColor: colors[index % colors.length] }}
@@ -51,13 +50,28 @@ const News = () => {
                                     {formatDate(newsItem.date)}
                                 </div>
                                 <div className={'newsItem_info'}>
-                                    {newsItem.images[0] && 
+                                    {newsItem.images[0] &&
                                         <div className={'newsItem_image'}>
                                             <img src={newsItem.images[0]} alt=""/>
-                                        </div>}
-                                    <h2>{newsItem.title}</h2>
-                                    <p dangerouslySetInnerHTML={{__html: newsItem.content}}>
-                                    </p>
+                                        </div>
+                                    }
+                                    <div className={'newsItem_text'}>
+                                        <h2>{newsItem.title}</h2>
+                                        <p
+                                            dangerouslySetInnerHTML={{__html: newsItem.content}}
+                                            style={{
+                                                padding: '10px 0',
+                                                maxHeight: expandedNews[index] ? 'none' : '100px',
+                                                overflow: 'hidden'
+                                            }}
+                                        />
+                                        <div
+                                            className={'readFull'}
+                                            onClick={() => toggleExpansion(index)}
+                                        >
+                                            {expandedNews[index] ? 'Скрыть' : 'Читать полностью'}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))
