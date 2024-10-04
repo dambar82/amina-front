@@ -1828,14 +1828,13 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 50px;
+  row-gap: 9vh;
 }
 
 .blockHigh {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 5vh;
   width: 60%;
 }
 
