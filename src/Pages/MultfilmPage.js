@@ -10,6 +10,32 @@ const MultfilmPage = () => {
 
     const [videoDurations, setVideoDurations] = useState({});
 
+    const [imgSrc, setImgSrc] = useState('./img/MultfilmHeaderImage.png');
+
+    const updateImage = () => {
+        // Проверяем ширину экрана и меняем изображение в зависимости от этого
+        if (window.innerWidth < 600) {
+            setImgSrc('./img/MultfilmHeaderImageMobile.png'); // Изображение для маленьких экранов
+        } else if (window.innerWidth < 1024) {
+            setImgSrc('./img/MultfilmHeaderImage1024.png'); // Изображение для средних экранов
+        } else {
+            setImgSrc('./img/MultfilmHeaderImage.png'); // Изображение для больших экранов
+        }
+    };
+
+    useEffect(() => {
+        // Устанавливаем изначальное изображение при загрузке
+        updateImage();
+
+        // Добавляем обработчик события изменения размера окна
+        window.addEventListener('resize', updateImage);
+
+        // Удаляем обработчик при размонтировании компонента
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, []);
+
     const handleLoadedMetadata = (index, duration) => {
         setVideoDurations((prevDurations) => ({
             ...prevDurations,
@@ -42,7 +68,7 @@ const MultfilmPage = () => {
     return (
         <div className={'pageWrapper'}>
             <div className={'pageHeaderImage'}>
-                <img src='./img/MultfilmHeaderImage.png' alt=""/>
+                <img src={imgSrc} alt=""/>
             </div>
             <div className={'pageContent'}>
                 <div className={'mulfilm_grid'}>

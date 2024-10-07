@@ -3,7 +3,7 @@ import React from 'react';
 const Book = () => {
     return (
         <div className={'pageWrapper'}>
-            <div className={'bookContent'}>
+            <div className={'bookContent bookContentPage'}>
                 <div className={'bookBlock'}>
                     <img src="./img/AminaBook.png" alt=""/>
                 </div>

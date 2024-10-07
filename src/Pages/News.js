@@ -7,6 +7,32 @@ const News = () => {
     const [expandedNews, setExpandedNews] = useState({});
     const colors = ['#94EBFF', '#FF7DB9', '#CFA0FF', '#B9FF43'];
 
+    const [imgSrc, setImgSrc] = useState('./img/NewsHeaderImage.png');
+
+    const updateImage = () => {
+
+        if (window.innerWidth < 600) {
+            setImgSrc('./img/NewsHeaderImageMobile.png');
+        } else if (window.innerWidth < 1024) {
+            setImgSrc('./img/NewsHeaderImage1024.png');
+        } else {
+            setImgSrc('./img/NewsHeaderImage.png');
+        }
+    };
+
+    useEffect(() => {
+        // Устанавливаем изначальное изображение при загрузке
+        updateImage();
+
+        // Добавляем обработчик события изменения размера окна
+        window.addEventListener('resize', updateImage);
+
+        // Удаляем обработчик при размонтировании компонента
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, []);
+
     function formatDate(inputDate) {
         const parts = inputDate.split('-');
         if (parts.length !== 3) {
@@ -36,7 +62,7 @@ const News = () => {
     return (
         <div className={'pageWrapper'}>
             <div className={'pageHeaderImage'}>
-                <img src='./img/NewsHeaderImage.png' alt=""/>
+                <img src={imgSrc} alt=""/>
             </div>
             <div className={'pageContent'}>
                 <div className={'newsContent'}>
