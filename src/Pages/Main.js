@@ -12,6 +12,25 @@ const Main = () => {
 
     const colors = ['#94EBFF', '#FF7DB9', '#CFA0FF', '#B9FF43'];
 
+    const [imgSrc, setImgSrc] = useState('./img/rightBlock.png');
+    const [imgLeftSrc, setImgLeftSrc] = useState('./img/leftBlock.png');
+
+    const handleLeftMouseEnter = () => {
+        setImgLeftSrc('./img/rightBlockHover.png');
+    }
+
+    const handleLeftMouseLeave = () => {
+        setImgLeftSrc('./img/leftBlock.png');
+    }
+
+    const handleMouseEnter = () => {
+        setImgSrc('./img/leftBlockHover.png');
+    };
+
+    const handleMouseLeave = () => {
+        setImgSrc('./img/rightBlock.png');
+    };
+
     function formatDate(inputDate) {
 
         const parts = inputDate.split('-');
@@ -68,7 +87,11 @@ const Main = () => {
                     <div className={'blockBottom'}>
                         <div className={'blockBottom_block'}>
                             <Link to='/songs'>
-                                <img src="./img/leftBlock.png" alt=""/>
+                                <img
+                                    src={imgLeftSrc}
+                                    onMouseEnter={handleLeftMouseEnter}
+                                    onMouseLeave={handleLeftMouseLeave}
+                                    alt=""/>
                             </Link>
                         </div>
                         <div className={'blockBottom_block'}>
@@ -76,7 +99,7 @@ const Main = () => {
                         </div>
                         <div className={'blockBottom_block'}>
                             <Link to='/multfilm'>
-                                <img src="./img/rightBlock.png" alt=""/>
+                                <img src={imgSrc} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} alt=""/>
                             </Link>
                         </div>
                     </div>
@@ -139,7 +162,7 @@ const Main = () => {
                             <img src="./img/bookHeader.png" alt=""/>
                         </div>
                     </div>
-                    <div className={'blockBottom'} style={{justifyContent: 'space-between'}}>
+                    <div className={'blockBottom blockBottomPurpleSecond'}>
                         <div className={'bookPic'}>
                             <img src="./img/Book.jpg" alt=""/>
                         </div>

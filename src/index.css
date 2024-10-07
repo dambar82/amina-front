@@ -1162,6 +1162,31 @@ a:active {
   z-index: 999;
   position: relative;
 }
+
+.mobileMenu {
+  display: none;
+  z-index: 1000;
+  top: 0;
+  padding: 20px 34px;
+  position: absolute;
+  background-color: #FEAFFF;
+  border-radius: 0 0 24px 24px;
+  width: 100%;
+}
+
+.mobileMenu_menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mobileMenu_menu ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .header__block {
   display: flex;
   align-items: center;
@@ -1268,10 +1293,10 @@ a:active {
 ==============================
 */
 @media (max-width: 825px) {
-  .header__block {
-    flex-wrap: wrap;
-    gap: 26px;
-  }
+  /*.header__block {*/
+  /*  flex-wrap: wrap;*/
+  /*  gap: 26px;*/
+  /*}*/
   .header__menu {
     width: 100%;
   }
@@ -1295,12 +1320,49 @@ a:active {
 sm 767 - Фаблеты	(500)
 ==============================
 */
+
+.burger {
+  display: none;
+}
+
+.mobileMenu_Element {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
+  text-transform: uppercase;
+}
+
 @media (max-width: 767px) {
+
+  .mobileMenu {
+    /*justify-content: space-between;*/
+    column-gap: 30px;
+    display: flex;
+  }
+
   .header__menu {
     display: none;
   }
+
+  .header__block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
   .header__logo {
-    text-align: center;
+    text-align: left;
     width: 100%;
   }
   h1 {
@@ -1818,6 +1880,29 @@ a {
   height: 90%;
 }
 
+@media screen and (max-width: 1440px) {
+  .amina_pic {
+    width: 80%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .amina_pic {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .amina_pic {
+    width: 95%;
+  }
+}
+
 .amina_pic img {
   height: auto;
 }
@@ -1828,13 +1913,41 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 9vh;
+  row-gap: 10vh;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .mainContent_blockPurple {
+    justify-content: space-around;
+  }
+
+  .blockHigh {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80% !important;
+  }
+
+  .blockBottom {
+    width: 90%;
+  }
+
+  .blockBottom_block {
+    height: auto;
+    width: 50% !important;
+  }
+
+  .blockBottom_block:nth-child(2) {
+    display: none;
+  }
 }
 
 .blockHigh {
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 10vh;
   width: 60%;
 }
 
@@ -1866,6 +1979,10 @@ a {
   column-gap: 2vw;
 }
 
+.blockBottomPurpleSecond {
+  justify-content: space-between;
+}
+
 .blockBottom_block {
   width: 25vw;
 }
@@ -1879,6 +1996,31 @@ a {
   width: 100%;
   height: 100vh;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px) {
+  .mainContent_blockGreen {
+    row-gap: 3vh !important;
+  }
+
+  .greenBlock_bottom {
+    flex-direction: column;
+    width: 90% !important;
+    max-height: 100%;
+    row-gap: 12px;
+  }
+
+  .selectedNews {
+    width: 100% !important;
+  }
+
+  .newsList {
+    width: 100% !important;
+  }
+
+  .showMoreButton {
+    display: none !important;
+  }
 }
 
 .greenBlock_bottom {
@@ -1981,11 +2123,30 @@ p {
 .mainContent_blockPurpleSecond {
   height: 120vh;
   width: 100%;
-  padding: 30vh 0 0 0;
+  padding: 25vh 0 0 0;
   display: flex;
   row-gap: 5vh;
   flex-direction: column;
   align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .mainContent_blockPurpleSecond {
+  }
+
+  .blockBottom {
+
+  }
+
+  .blockBottomPurpleSecond {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  .bookTextBlock {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .bookPic {
@@ -2007,7 +2168,13 @@ p {
 
 .main_footer p {
   height: auto;
-  font-size: 16px;
-  font-size: 20px;
+  font-size: 16px !important;
+  line-height: 20px !important;
   font-family: 'Ubuntu', sans-serif;
+}
+
+@media screen and (max-width: 762px) {
+  .main_footer p {
+
+  }
 }
