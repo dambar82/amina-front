@@ -15,6 +15,30 @@ const Songs = () => {
 
     const pics = ['./img/songPink.png', './img/songPurple.png', './img/songGreen.png']
 
+    const [imgSrc, setImgSrc] = useState('./img/SongsHeaderImage.png');
+
+    const updateImage = () => {
+
+        if (window.innerWidth < 600) {
+            setImgSrc('./img/SongsHeaderImageMobile.png');
+        } else if (window.innerWidth < 1024) {
+            setImgSrc('./img/SongsHeaderImage1024.png');
+        } else {
+            setImgSrc('./img/SongsHeaderImage.png');
+        }
+    };
+
+    useEffect(() => {
+
+        updateImage();
+
+        window.addEventListener('resize', updateImage);
+
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, []);
+
     useEffect(() => {
         const getSongs = async () => {
             const response = await axios.get(`${url}amina/audio`);
@@ -56,7 +80,6 @@ const Songs = () => {
 
     const handleTimeUpdate = () => {
         setCurrentTime(audioRef.current.currentTime);
-        console.log((currentTime / (audioRef.current?.duration || 1)) * 100);
     };
 
     const handleSeek = (e) => {
@@ -78,11 +101,8 @@ const Songs = () => {
         const clickRatio = clickX / rect.width;  // Определяем соотношение клика относительно ширины прогресс-бара
         const newTime = clickRatio * audioRef.current.duration;  // Вычисляем новое время песни
 
-        // Обновляем текущее время и проигрывание
-        console.log('Current Time before update:', audioRef.current.currentTime);
         audioRef.current.currentTime = newTime;
         setCurrentTime(newTime);
-        console.log('Current Time after update:', audioRef.current.currentTime);
     };
 
     const playPreviousSong = () => {
@@ -108,7 +128,7 @@ const Songs = () => {
     return (
         <div className={'pageWrapper'}>
             <div className={'pageHeaderImage'}>
-                <img src="./img/SongsHeaderImage.png" alt=""/>
+                <img src={imgSrc} alt=""/>
             </div>
             <div className={'pageContent'}>
                 <div className={'songsContent'}>

@@ -1420,9 +1420,76 @@ body {
   padding: 48px 0;
 }
 
+.slider {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pages-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.pages-container img {
+  border-radius: 24px;
+  transition: transform 0.5s ease;
+}
+
+.page {
+  transition: transform 0.5s ease;
+}
+
+.previous {
+  z-index: 98;
+  width: 70%;
+  transform: translateX(30%);
+  opacity: 0.5; /* Уменьшенная непрозрачность для предыдущей страницы */
+}
+
+.current {
+  width: 100%;
+  z-index: 99;
+  /*transform: scale(1.1); !* Увеличиваем текущую страницу *!*/
+  opacity: 1;
+}
+
+.next {
+  z-index: 98;
+  width: 70%;
+  transform: translateX(-30%);
+  opacity: 0.5; /* Уменьшенная непрозрачность для следующей страницы */
+}
+
+.arrow {
+  background: #376DF1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  z-index: 130;
+}
+
+.left {
+  left: 40px;
+}
+
+.right {
+  right: 40px;
+}
+
 @media screen and (max-width: 1440px) {
   .pageWrapper {
-    padding: 0 3rem;
+    padding: 48px 3rem;
   }
 }
 
@@ -1666,19 +1733,33 @@ video {
     display: flex;
     flex-direction: column;
   }
+
+  .bookBlock {
+    width: 100% !important;
+  }
+
+  .bookTextBlock {
+    width: 100% !important;
+  }
 }
 
 .bookContentPage {
-  column-gap: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 5vh;
+  width: 90%;
+  height: 80vh;
+  padding: 0 5vw;
 }
 
 .bookBlock {
-  border: 2px solid #FFFFFF;
   border-radius: 24px;
+  width: 60%;
 }
 
 .bookTextBlock {
-  max-width: 620px;
+  width: 40%;
   display: flex;
   flex-direction: column;
   row-gap: 40px;
@@ -1772,13 +1853,62 @@ a {
   border-radius: 24px 24px 0px 0px;
   background: rgba(255, 255, 255, 0.50);
   backdrop-filter: blur(10.100000381469727px);
-  width: 1516px;
+  width: 80%;
   /*height: 80px;*/
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 12px 20px;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 1024px) {
+  .audioPlayer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .progressBarContainer {
+    flex-direction: column-reverse;
+    row-gap: 5px;
+    position: relative;
+  }
+  .controls {
+    margin-right: auto;
+    order: 1;
+  }
+  .volume {
+    order: 0;
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+  }
+  .progressBar {
+    order: 2;
+  }
+  .timeDisplay {
+    order: 3;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .volume {
+    display: none;
+  }
+
+  .volume input {
+    display: none;
+  }
+
+  .volume img {
+    display: none;
+  }
+
+  .controls {
+    margin-right: 0;
+  }
 }
 
 .playerDetails {
@@ -2149,7 +2279,6 @@ a {
 }
 
 p {
-  height: 100%;
   padding: 0;
   margin: 0;
   font-family: 'Ubuntu', sans-serif;
