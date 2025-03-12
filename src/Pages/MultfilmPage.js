@@ -60,11 +60,15 @@ const MultfilmPage = () => {
     useEffect(() => {
         const getVideos = async () => {
             const response = await axios.get(`${url}amina/video`);
-            console.log(response.data.d)
+            console.log('video', response.data.data)
             setVideos(response.data.data);
         }
         getVideos();
     }, [])
+
+    useEffect(() => {
+        console.log('selected', selectedVideo)
+    }, [selectedVideo])
 
     return (
         <div className={'pageWrapper'}>
@@ -100,7 +104,7 @@ const MultfilmPage = () => {
                         <div className={'modalContent'}>
                             <span className={'close'} onClick={closeModal}>&times;</span>
                             <video controls>
-                                <source src={selectedVideo.video} type="video/mp4" />
+                                <source src={selectedVideo.link} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                         </div>
