@@ -60,6 +60,7 @@ const MultfilmPage = () => {
     useEffect(() => {
         const getVideos = async () => {
             const response = await axios.get(`${url}amina/video`);
+            console.log(response.data.d)
             setVideos(response.data.data);
         }
         getVideos();
