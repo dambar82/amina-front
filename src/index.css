@@ -1590,19 +1590,24 @@ body {
 .modalContent {
   position: relative;
   width: 80%;
-  height: 90%;
+  /*height: 90%;*/
   max-width: 900px;
+}
+
+.modalContent video {
+  object-fit: contain;
+  width: 100%;
 }
 
 .close {
   position: absolute;
-  top: 0px;
-  right: 20px;
-  font-size: 30px;
+  top: -50px;
+  right: -40px;
+  font-size: 60px;
+  line-height: 60px;
   color: white;
   cursor: pointer;
   z-index: 1000;
-  line-height: 1;
   width: auto;
   height: auto;
   padding: 0;

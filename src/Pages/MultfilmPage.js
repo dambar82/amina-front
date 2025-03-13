@@ -100,7 +100,7 @@ const MultfilmPage = () => {
                     }
                 </div>
                 {selectedVideo && (
-                    <div className={'modal'}>
+                    <div className={'modal'} onClick={closeModal}>
                         <div className={'modalContent'}>
                             <span className={'close'} onClick={closeModal}>&times;</span>
                             <video controls>
