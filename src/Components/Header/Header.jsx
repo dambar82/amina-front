@@ -17,11 +17,11 @@ const Header = () => {
                                     Мультфильмнар
                                 </li>
                             </Link>
-                            <Link to='/book'>
-                                <li className="mobileMenu_Element">
-                                    «Әминә» китабы
-                                </li>
-                            </Link>
+                            {/*<Link to='/book'>*/}
+                            {/*    <li className="mobileMenu_Element">*/}
+                            {/*        «Әминә» китабы*/}
+                            {/*    </li>*/}
+                            {/*</Link>*/}
                             <Link to='/songs'>
                                 <li className="mobileMenu_Element">
                                     Җырлар

@@ -69,7 +69,7 @@ function App() {
             <Route path='/' element={<Main/>}/>
             <Route path='/multfilm' element={<MultfilmPage/>}/>
             <Route path='/news' element={<News/>}/>
-            <Route path='/book' element={<Book/>}/>
+            {/*<Route path='/book' element={<Book/>}/>*/}
             <Route path='/songs' element={<Songs/>}/>
         </Route>
       </Routes>
