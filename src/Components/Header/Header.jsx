@@ -63,17 +63,17 @@ const Header = () => {
                                     </div>
                                 </li>
                             </Link>
-                            <Link to='/book'>
-                                <li className="menuElement">
-                                    «Әминә» китабы
-                                    <div className="appElement">
-                                        <div className="appElement_box">
-                                            <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                            <div className="appElement__txt">Бүлек эшләнә</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </Link>
+                            {/*<Link to='/book'>*/}
+                            {/*    <li className="menuElement">*/}
+                            {/*        «Әминә» китабы*/}
+                            {/*        <div className="appElement">*/}
+                            {/*            <div className="appElement_box">*/}
+                            {/*                <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>*/}
+                            {/*                <div className="appElement__txt">Бүлек эшләнә</div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    </li>*/}
+                            {/*</Link>*/}
                             <Link to='/songs'>
                                 <li className="menuElement">
                                     Җырлар
