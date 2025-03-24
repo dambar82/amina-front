@@ -157,26 +157,26 @@ const Main = () => {
                     </Link>
                 </div>
                 <div className={'mainContent_blockPurpleSecond'}>
-                    <div className={'blockHigh'}>
-                        <div className={'blockHigh_headerPic'}>
-                            <img src="./img/bookHeader.png" alt=""/>
-                        </div>
-                    </div>
-                    <div className={'blockBottom blockBottomPurpleSecond'}>
-                        <div className={'bookPic'}>
-                            <img src="./img/Book.jpg" alt=""/>
-                        </div>
-                        <div className={'bookTextBlock'}>
-                            <p style={{color: 'white'}}>
-                                Откройте захватывающий мир, полный тайн и волшебства, вместе с Аминой — храброй девочкой, которая отправляется в невероятное приключение, чтобы раскрыть древние секреты своего народа. Вас ждут удивительные персонажи, неожиданные повороты и мир, где дружба и отвага побеждают любые преграды. Погрузитесь в историю, которая вдохновляет и учит верить в себя."
-                            </p>
-                            <Link to='/book'>
-                                <div className={'readButton'}>
-                                    Читать книгу
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
+                    {/*<div className={'blockHigh'}>*/}
+                    {/*    <div className={'blockHigh_headerPic'}>*/}
+                    {/*        <img src="./img/bookHeader.png" alt=""/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    {/*<div className={'blockBottom blockBottomPurpleSecond'}>*/}
+                    {/*    <div className={'bookPic'}>*/}
+                    {/*        <img src="./img/Book.jpg" alt=""/>*/}
+                    {/*    </div>*/}
+                    {/*    <div className={'bookTextBlock'}>*/}
+                    {/*        <p style={{color: 'white'}}>*/}
+                    {/*            Откройте захватывающий мир, полный тайн и волшебства, вместе с Аминой — храброй девочкой, которая отправляется в невероятное приключение, чтобы раскрыть древние секреты своего народа. Вас ждут удивительные персонажи, неожиданные повороты и мир, где дружба и отвага побеждают любые преграды. Погрузитесь в историю, которая вдохновляет и учит верить в себя."*/}
+                    {/*        </p>*/}
+                    {/*        <Link to='/book'>*/}
+                    {/*            <div className={'readButton'}>*/}
+                    {/*                Читать книгу*/}
+                    {/*            </div>*/}
+                    {/*        </Link>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
                 <div className={'main_footer'}>
                     <p>
