@@ -4,33 +4,6 @@ import {Link} from "react-router-dom";
 
 const Main = () => {
 
-    const url = 'https://api.multfilm.tatar/api/'
-
-    const [news, setNews] = useState([]);
-
-    const [selectedNews, setSelectedNews] = useState(null)
-
-    const colors = ['#94EBFF', '#FF7DB9', '#CFA0FF', '#B9FF43'];
-
-    const [imgSrc, setImgSrc] = useState('./img/rightBlock.png');
-    const [imgLeftSrc, setImgLeftSrc] = useState('./img/leftBlock.png');
-
-    const handleLeftMouseEnter = () => {
-        setImgLeftSrc('./img/rightBlockHover.png');
-    }
-
-    const handleLeftMouseLeave = () => {
-        setImgLeftSrc('./img/leftBlock.png');
-    }
-
-    const handleMouseEnter = () => {
-        setImgSrc('./img/leftBlockHover.png');
-    };
-
-    const handleMouseLeave = () => {
-        setImgSrc('./img/rightBlock.png');
-    };
-
     function formatDate(inputDate) {
 
         const parts = inputDate.split('-');
@@ -44,26 +17,6 @@ const Main = () => {
 
         return `${day}.${month}`;
     }
-
-    useEffect(() => {
-        const getNews = async () => {
-            const response = await axios.get(`${url}amina/news`);
-            setNews(response.data.data);
-
-            console.log(response.data.data)
-        }
-        getNews();
-    }, [])
-
-    useEffect(() => {
-        if (news.length > 0) {
-            setSelectedNews(news[0]);
-        }
-    }, [news])
-
-    const handleNewsClick = (newsItem) => {
-        setSelectedNews(newsItem); // Устанавливаем выбранную новость
-    };
 
     return (
         <>
@@ -80,74 +33,37 @@ const Main = () => {
                         </div>
                         <div className={'blockHigh_headerText'}>
                             <p>
-                                Амина — девочка, которая своим добром и смелостью завоевала сердца многих. Мультфильм рассказывает о её увлекательных приключениях, где она вместе с друзьями преодолевает трудности и находит радость в каждом дне. Эти истории полны тепла и вдохновения как для детей, так и для взрослых.
+                                Әминә исемле тиктормас кыз белән бергә татар телен өйрәнү бик күңелле һәм кызык. Ул җырларда һәм мультфильмнарда сезне үзе, гаиләсе, бүлмәсе белән таныштырыр, саннар, төсләр дөньясына, бакчага, урманга сәяхәткә дә алып китәр. Әйдә, сез дә Әминәгә кушылыгыз!
                             </p>
                         </div>
                     </div>
                     <div className={'blockBottom'}>
-                        <div className={'blockBottom_block'}>
+                        <div className={`blockBottom_block blockBottom_blockImg blockImgLeft`}>
                             <Link to='/songs'>
-                                <img
-                                    src={imgLeftSrc}
-                                    onMouseEnter={handleLeftMouseEnter}
-                                    onMouseLeave={handleLeftMouseLeave}
-                                    alt=""/>
+                                <div className={'podlozhka podlozhka_left'}>
+                                </div>
+                                <img src='./img/songBlock.png' alt=""/>
                             </Link>
                         </div>
                         <div className={'blockBottom_block'}>
                             <img src="./img/Amina.png" alt=""/>
                         </div>
-                        <div className={'blockBottom_block'}>
+                        <div className={'blockBottom_block blockBottom_blockImg blockImgRight'}>
                             <Link to='/multfilm'>
-                                <img src={imgSrc} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} alt=""/>
+                                <div className={'podlozhka podlozhka_right'}>
+                                </div>
+                                <img
+                                    src='./img/multfilmBlock.png'
+                                    alt=""
+                                />
                             </Link>
                         </div>
                     </div>
                 </div>
                 <div className={'mainContent_blockGreen'}>
                     <div className={'blockHigh'}>
-                        <div className={'blockHigh_headerPic'}>
-                            <img src="./img/greenHeader.png" alt=""/>
-                        </div>
                     </div>
                     <div className={'greenBlock_bottom'}>
-                        {news.length > 0 && (
-                          <>
-                              <div className={'selectedNews'}>
-                                  {
-                                      selectedNews?.images[0] && (
-                                          <div className={'selectedNews_image'}>
-                                              <img src={selectedNews.images[0]} alt=""/>
-                                          </div>
-                                      )
-                                  }
-                                  <div className={'selectedNews_text'}>
-                                      <h2>{selectedNews?.title}</h2>
-                                      <p dangerouslySetInnerHTML={{__html: selectedNews?.content}}></p>
-                                  </div>
-                              </div>
-                              <div className={'newsList'}>
-                                  {news
-                                      .slice(0,3).filter((newsItem) => newsItem.id !== selectedNews?.id) // Исключаем выбранную новость
-                                      .map((newsItem) => (
-                                          <div
-                                              key={newsItem.id}
-                                              className={'newsList_item'}
-                                              onClick={() => handleNewsClick(newsItem)} // По клику на новость меняем выбранную
-                                          >
-                                              <div className={'newsItem_date'}>
-                                                  {formatDate(newsItem.date)}
-                                              </div>
-                                              <div className={'newsItem_info'}>
-                                                  <h2>{newsItem.title}</h2>
-                                                  <p dangerouslySetInnerHTML={{__html: newsItem.content}}>
-                                                  </p>
-                                              </div>
-                                          </div>
-                                      ))}
-                              </div>
-                          </>
-                        )}
                     </div>
                     <Link to='/news'>
                         <div className={'showMoreButton'}>
@@ -157,33 +73,13 @@ const Main = () => {
                     </Link>
                 </div>
                 <div className={'mainContent_blockPurpleSecond'}>
-                    {/*<div className={'blockHigh'}>*/}
-                    {/*    <div className={'blockHigh_headerPic'}>*/}
-                    {/*        <img src="./img/bookHeader.png" alt=""/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    {/*<div className={'blockBottom blockBottomPurpleSecond'}>*/}
-                    {/*    <div className={'bookPic'}>*/}
-                    {/*        <img src="./img/Book.jpg" alt=""/>*/}
-                    {/*    </div>*/}
-                    {/*    <div className={'bookTextBlock'}>*/}
-                    {/*        <p style={{color: 'white'}}>*/}
-                    {/*            Откройте захватывающий мир, полный тайн и волшебства, вместе с Аминой — храброй девочкой, которая отправляется в невероятное приключение, чтобы раскрыть древние секреты своего народа. Вас ждут удивительные персонажи, неожиданные повороты и мир, где дружба и отвага побеждают любые преграды. Погрузитесь в историю, которая вдохновляет и учит верить в себя."*/}
-                    {/*        </p>*/}
-                    {/*        <Link to='/book'>*/}
-                    {/*            <div className={'readButton'}>*/}
-                    {/*                Читать книгу*/}
-                    {/*            </div>*/}
-                    {/*        </Link>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                 </div>
                 <div className={'main_footer'}>
                     <p>
-                        Проект реализован студией "Татармультфильм" по заказу мэрии Казани  и направлен на развитие культурного и образовательного контента для детей.
+                        Проект Казан мэриясе ярдәме белән «Татармультфильм» студиясе тарафыннан гамәлгә ашырылды.  Проект балалар өчен белем бирү, татар телен популярлаштыру юнәлешендәге мәдәни контентны  үстерүгә йөз тота.
                     </p>
                     <p>
-                        © 2024 «Амина». Все права защищены. Использование материалов сайта возможно только с письменного разрешения.
+                        © 2024 «Амина». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
                     </p>
                 </div>
             </div>

@@ -60,15 +60,10 @@ const MultfilmPage = () => {
     useEffect(() => {
         const getVideos = async () => {
             const response = await axios.get(`${url}amina/video`);
-            console.log('video', response.data.data)
             setVideos(response.data.data);
         }
         getVideos();
     }, [])
-
-    useEffect(() => {
-        console.log('selected', selectedVideo)
-    }, [selectedVideo])
 
     return (
         <div className={'pageWrapper'}>
