@@ -6,6 +6,9 @@ import {useEffect} from "react";
 import News from "./Pages/News";
 import Book from "./Pages/Book";
 import Songs from "./Pages/Songs";
+import Reviews from "./Pages/Reviews/Reviews";
+import About from "./Pages/AboutPage/About";
+import SongsText from "./Pages/SongsText/SongsText";
 
 function App() {
 
@@ -38,8 +41,8 @@ function App() {
                     mobileMenuNews.style.background = 'linear-gradient(279deg, #2AEB9A -1.88%, #1CD2EB 100%)';
                 }
                 break;
-            case '/book':
-                document.body.style.background = 'linear-gradient(298deg, #739BFF 33.58%, #9B99FF 100%)';
+            case '/reviews':
+                document.body.style.background = 'linear-gradient(280deg, #CDBEFF -1.76%, #B8A3FF 100%)';
                 const mobileMenuBook = document.querySelector('.mobileMenu');
                 if (mobileMenuBook) {
                     mobileMenuBook.style.background = 'linear-gradient(298deg, #739BFF 33.58%, #9B99FF 100%)';
@@ -50,6 +53,20 @@ function App() {
                 const mobileMenuSongs = document.querySelector('.mobileMenu');
                 if (mobileMenuSongs) {
                     mobileMenuSongs.style.background = 'linear-gradient(280deg, #CDBEFF -1.76%, #B8A3FF 100%)';
+                }
+                break;
+            case '/about':
+                document.body.style.background = 'linear-gradient(297.92deg, #739BFF 33.58%, #9B99FF 100%)';
+                const mobileMenuAbout = document.querySelector('.mobileMenu');
+                if (mobileMenuAbout) {
+                    mobileMenuAbout.style.background = 'linear-gradient(297.92deg, #739BFF 33.58%, #9B99FF 100%)';
+                }
+                break;
+            case '/songs_text':
+                document.body.style.background = 'linear-gradient(279.48deg, #2AEB9A -1.88%, #1CD2EB 100%)';
+                const mobileMenuSongsText = document.querySelector('.mobileMenu');
+                if (mobileMenuSongsText) {
+                    mobileMenuSongsText.style.background = 'linear-gradient(279.48deg, #2AEB9A -1.88%, #1CD2EB 100%)';
                 }
                 break;
             default:
@@ -68,9 +85,10 @@ function App() {
         <Route path='/' element={<MainLayout/>}>
             <Route path='/' element={<Main/>}/>
             <Route path='/multfilm' element={<MultfilmPage/>}/>
-            <Route path='/news' element={<News/>}/>
-            {/*<Route path='/book' element={<Book/>}/>*/}
+            <Route path='/reviews' element={<Reviews/>}></Route>
+            <Route path='/about' element={<About/>}></Route>
             <Route path='/songs' element={<Songs/>}/>
+            <Route path='/songs_text' element={<SongsText/>}></Route>
         </Route>
       </Routes>
   );

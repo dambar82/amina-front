@@ -693,470 +693,7 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   display: block;
 }
 
-/*
-	Кнопка Наверх
-	====================
-*/
-.scrollup{
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  display: none;
-  border: 0;
-  overflow: hidden;
-  background: var(--dark);
-  border-radius: 50px;
-  width: 3rem;
-  z-index: 10000000;
-  padding-left: 1.5rem;
-  opacity: 0.4;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-.scrollup.active{
-  display: block;
-}
-.scrollup:hover{
-  opacity: 1;
-  border: 0;
-  width: 9rem;
-  transition: all 0.2s ease 0s;
-}
-.scrollup .icon{
-  position: absolute;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border: 2px solid var(--dark);
-  z-index: 1;
-  -webkit-transition: all 0.2s ease 0s;
-  -o-transition: all 0.2s ease 0s;
-  transition: all 0.2s ease 0s;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
-}
-.scrollup .icon:hover,
-.scrollup .icon:focus,
-.scrollup .icon:active{
-  border: 2px solid var(--dark);
-  background-color: var(--color);
-  opacity: 1;
-}
-.scrollup .tooltip {
-  display: block;
-  white-space: nowrap;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--color);
-  line-height: 3rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.scrollup:hover .tooltip {
-  opacity: 1;
-  transition: all 0.2s ease 0.1s;
-}
 
-/*
-	Соглашение на политику конфиденциальности
-	====================
-*/
-#agreement-block{text-align:left}
-#agreement-block label{display:inline-block;position:relative;padding-left:2rem;margin-bottom:.7rem;font-weight:400;line-height:1.4;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;font-size:.7rem;color:#666}
-#agreement input[type="checkbox"] + label::before{content:'';position:absolute;display:block;width:1rem;height:1rem;border:1px solid #000;left:0;top:1px;opacity:0;-webkit-transition:all .12s,border-color .08s;-o-transition:all .12s,border-color .08s;transition:all .12s,border-color .08s}
-#agreement-block input[type="checkbox"]:checked + label::before{width:.5rem;top:-3px;left:6px;border:2px solid #000;border-radius:0;opacity:1;border-top-color:transparent;border-left-color:transparent;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
-#agreement-block input[type="checkbox"] + label::after{content:'';position:absolute;display:block;width:1rem;height:1rem;border:1px solid #000;left:0;top:1px;opacity:.3}
-#modal-not-agreement{display:none;position:fixed;text-align:center;width:90%;max-width:450px;padding:3rem 2rem;background-color:#fff;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);z-index:99999;overflow:hidden;border:0;-webkit-box-shadow:0 0 60px rgba(0,0,0,0.15);box-shadow:0 0 60px rgba(0,0,0,0.15)}
-#modal-not-agreement h2{color:var(--dark);font-size:1.875rem;font-weight:400;text-align:center;text-transform:none;position:relative;margin:1.5rem 0;padding:0;display:block}
-#modal-not-agreement .icon{width:4rem;height:4rem;border:1px solid #de0000;border-radius:50%;margin:0 auto 1.25rem;padding:0;position:relative;-webkit-box-sizing:content-box;box-sizing:content-box}
-#modal-not-agreement .icon svg{stroke:#de0000;fill:none;width:1.5rem;height:4rem}
-#modal-not-agreement__overlay{display:none;position:fixed;background:#000;opacity:.5;top:0;left:0;bottom:0;right:0;z-index:9998}
-.dark_theme #modal-not-agreement {background: #444;}
-.dark_theme #modal-not-agreement h2 {color: #fff;}
-
-.agreement-check input{position:absolute;top:4px;z-index:1;opacity:0;width:1.5rem;height:1.5rem;cursor:pointer}
-.agreement-check input + .agreement-label .check::before{content:'';position:absolute;display:block;width:1rem;height:1rem;border:1px solid #000;left:0;top:1px;opacity:0;-webkit-transition:all .12s,border-color .08s;-o-transition:all .12s,border-color .08s;transition:all .12s,border-color .08s}
-.agreement-check input + .agreement-label .check::after{content:'';position:absolute;display:block;width:1.25rem;height:1.25rem;border:1px solid #D7E1E9;left:0;top:1px;opacity:1;border-radius:3px}
-.agreement-check input:checked + .agreement-label .check::before{width:.5rem;top:-1px;left:7px;border:2px solid var(--color);border-radius:0;opacity:1;border-top-color:transparent;border-left-color:transparent;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
-.agreement-check input:hover + .agreement-label .check::after{border:1px solid var(--color)}
-.agreement-check{position:relative}
-.agreement-label{position:relative;font-size:.7rem;font-size: max(0.7rem, 12px);padding-left:2rem;font-weight:var(--f1w); text-align: left;}
-.agreement-label .check{position:absolute;left:0;width:1.25rem;height:1.25rem;cursor:pointer}
-
-/*
-	Форма
-	====================
-*/
-.hideLabels .form-group{margin:.5rem auto 1rem}
-.hideLabels .form-group label{position:absolute;left:1rem;top:16px;color:#3e4757;transition:all .2s ease;font-size:.9rem}
-.hideLabels .form-control{position:relative;z-index:2;margin:0;width:100%;padding:1.25rem 1rem 1rem;height:auto;-webkit-box-shadow:none;box-shadow:none;color:var(--dark);font-size:.9rem;border-radius:6px;border:0;background:transparent;transition:all .2s ease}
-.hideLabels label.label-none,.hideLabels label.label-none,.hideLabels .form-control:focus + label{top:5px;font-size:12px}
-.hideLabels select.form-control{padding:20px 1rem}
-.form .form-head{line-height:1.2}
-.form .button{margin:1.25rem 0}
-
-
-/*
-	Радиокнопки
-	====================
-*/
-input[type=radio]{display:none}input[type=radio]+label{display:inline-block;position:relative;padding-left:2rem;margin-bottom:.7rem;font-weight:400;line-height:1.4;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}input[type=radio]+label::before{content:'';position:absolute;display:block;width:1rem;height:1rem;border:1px solid #000;left:0;top:1px;opacity:0;-webkit-transition:all .12s,border-color .08s;-o-transition:all .12s,border-color .08s;transition:all .12s,border-color .08s}input[type=radio]+label::before{border-radius:50%;width:19px;height:19px;opacity:.7}input[type=radio]:checked+label::before{border:1px solid var(--color);opacity:1}input[type=radio]:checked+label::after{content:'';position:absolute;display:block;width:9px;height:9px;left:5px;top:6px;background:var(--color);border-radius:50%}input[type=radio]:checked+label,input[type=radio]:hover+label{color:var(--color)}input[type=radio]:hover+label::before{border:2px solid var(--color);opacity:1}
-
-/*
-	Кнопка добавления файла
-	====================
-*/
-.inputfile{width:.1px;height:.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}
-.inputfile + label{font-weight:700;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;display:inline-block;overflow:hidden;margin:0}
-.no-js .inputfile + label{display:none}
-.inputfile:focus + label,.inputfile.has-focus + label{outline:1px dotted #000;outline:-webkit-focus-ring-color auto 5px}
-.inputfile + label span{color: var(--color);}
-.inputfile + label svg{width:16px;height:22px;vertical-align:middle;fill:currentColor;margin-top:-8px;margin-right:.5rem; fill: var(--dark);}
-.inputmyfile + label{}
-.inputmyfile:focus + label,
-.inputmyfile.has-focus + label,
-.inputmyfile + label:hover{color: var(--dark)}
-
-/*
-	Кнопка добавления текстового блока
-	====================
-*/
-.form span.add-textarea{position:relative;color:#1d1a24;font-weight:700;padding-left:1rem;cursor:pointer;transition:all .2s ease 0}
-.form span.add-textarea:hover{color:#fff}
-.form span.add-textarea svg:hover,.form span.add-textarea:hover svg{fill:#fff;transition:all .2s ease 0}
-.form span.add-textarea:not(.opened) + .form-group{display:none}
-.form span.add-textarea.opened + .form-group{margin-top:-24px}
-.form span.add-textarea svg{position:absolute;left:-2rem;top:0;width:1.2rem;height:1.2rem;transition:all .2s ease 0}
-.form span.add-textarea.opened svg{transform:rotate(45deg)}
-
-/*
-	Подсказки в форме к полю
-	====================
-*/
-.form-group .message-tooltip,.form-group .message-error{position:absolute;right:0;top:-1.5rem;padding:.5rem 1rem;font-size:1rem;font-weight:500;font-weight:var(--f1w);font-weight:var(--f1w);line-height:1.2;background:rgba(0,0,0,0.85);z-index:10;color:#f5f6f8;font-size:.8rem;max-width:80%;border-radius:4px;box-shadow:0 5px 20px rgba(0,0,0,0.3)}
-.form-group .message-tooltip::before,.form-group .message-error::before{content:"";position:absolute;width:0;height:0;border-style:solid;border-width:1rem 1rem 0 0;border-color:rgba(0,0,0,0.85) transparent transparent;right:1rem;bottom:-1rem}
-
-/*
-	Цвет placeholder
-	====================
-*/
-.form-control::-webkit-input-placeholder{color:#1d1a23!important}
-.form-control:-ms-input-placeholder{color:#1d1a23!important}
-.form-control::-ms-input-placeholder{color:#1d1a23!important}
-.form-control::placeholder{color:#1d1a23!important}
-
-/*
-	Центрирование placeholder
-	====================
-*/
-.form.ct .form-control::-webkit-input-placeholder{text-align:center}
-.form.ct .form-control:-ms-input-placeholder{text-align:center}
-.form.ct .form-control::-ms-input-placeholder{text-align:center}
-.form.ct .form-control::placeholder{text-align:center}
-.form.ct .form-control{text-align:center}
-
-/*
-	Список мультигородов
-	====================
-*/
-#popup-location-confirm{position:absolute;top:3rem;left:0;box-shadow: 0 10px 60px 0px rgba(0,0,0,0.25);visibility:hidden;opacity:0;border-radius: 5px;z-index:120;-webkit-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
-#popup-location-confirm.show{opacity:1;visibility:visible}
-#popup-location-confirm .item{position:relative;background:#fff;padding:1.5rem;border-radius:5px}
-#popup-location-confirm .item::before{content:"";position:absolute;background:#fff;width:1rem;height:1rem;transform:rotate(45deg);top:-.5rem}
-#popup-location-confirm .link{cursor: pointer;color: var(--gray); border-bottom: 1px dashed;}
-#popup-location-confirm .confirm {margin-right: 1rem;color: var(--color);font-weight: bold;}
-#popup-location-confirm .header{font-size:1rem;margin-bottom: 0.5rem;color: var(--dark);}
-#popup-location{position:fixed;top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,.3);visibility:hidden;opacity:0;z-index:120;overflow:hidden;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:all .3s .1s ease-in-out;-o-transition:all .3s .1s ease-in-out;transition:all .3s .1s ease-in-out}
-#popup-location.show{opacity:1;visibility:visible}
-#popup-location .location-field{position:absolute;top:0;bottom:0;overflow-x:hidden;overflow-y:scroll;max-width:1200px;width:70%;min-width:320px;background:#fff;padding:1.5rem 4rem 1.5rem 3rem;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);-webkit-transition:-webkit-transform .3s ease-in-out;transition:-webkit-transform .3s ease-in-out;-o-transition:transform .3s ease-in-out;transition:transform .3s ease-in-out;transition:transform .3s ease-in-out,-webkit-transform .3s ease-in-out;transition:transform .3s ease-in-out,-webkit-transform .3s ease-in-out;right:0}
-#popup-location .location-field.active{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
-#popup-location .citys{-webkit-column-count:3;column-count:3}
-#popup-location .citys ul li{-webkit-column-break-inside:avoid;page-break-inside:avoid;break-inside:avoid;margin:3px 0}
-#popup-location .citys .letter{font-weight:700;font-size:1.5rem;margin:.5rem 0}
-#popup-location .citys .city{display:inline-block;font-size:.9rem;cursor:pointer}
-#popup-location .header{font-size:2rem;font-weight:700}
-#popup-location .close_link{position:absolute;right:3rem;top:2rem;cursor:pointer;-webkit-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out;line-height:0}
-#popup-location .close_link svg{width:2rem;height:2rem;padding:5px}
-#popup-location .maincitys{border-bottom:1px solid var(--color);margin-bottom:2rem;margin-top:1rem;padding-bottom:1rem}
-#popup-location .maincitys .city{display:inline-block;margin:.5rem 2rem;margin-left:0;font-weight:700;font-size:1rem;border-bottom-width:2px}
-
-.city_span{color:var(--color);font-weight:700;border-bottom:1px dashed;cursor:pointer}
-.city_span:hover{border-bottom-color:transparent}
-
-@media (max-width: 767px) {
-  #popup-location .location-field {width: 90%;}
-}
-@media (max-width: 499px) {
-  #popup-location .header {font-size: 1.5rem;}
-  #popup-location .close_link {right: 2rem;top: 1.5rem;}
-  #popup-location .location-field {padding: 1.5rem 2rem 1.5rem 2rem;}
-  #popup-location .citys {column-count: 2;}
-}
-
-/*
-	Анимация с кругами при наведении
-	====================
-*/
-[anim="ripple"]{position:relative;overflow:hidden}
-[anim="ripple"]:before{content:'';position:absolute;display:block;background:var(--ripple-background,white);border-radius:50%;pointer-events:none;top:calc(var(--y) * 1px);left:calc(var(--x) * 1px);width:calc(var(--d) * 1px);height:calc(var(--d) * 1px);opacity:calc(var(--o,1) * var(--ripple-opacity,0.3));-webkit-transition:calc(var(--t,0) * var(--ripple-duration,600ms)) var(--ripple-easing,linear);transition:calc(var(--t,0) * var(--ripple-duration,600ms)) var(--ripple-easing,linear);-webkit-transform:translate(-50%,-50%) scale(var(--s,1));transform:translate(-50%,-50%) scale(var(--s,1));-webkit-transform-origin:center;transform-origin:center}
-
-/*
-	Всплывающие окна
-	====================
-*/
-.popup {position:relative;background:#fff;max-width:400px;width:auto;margin:0 auto;padding:2rem 3rem;display:none}
-.dark_theme .popup {background: #444;}
-.popup-manager {padding:3rem;background:#fff7e6;margin:-3rem;margin-right:1rem}
-.popup-manager .avatar{margin:1.5rem 0;max-width:180px}
-.popup-manager .name{font-weight:700;margin-bottom:.5rem}
-.popup-manager .position{font-size:.9rem;border-bottom:1px solid #ddd;padding-bottom:1rem;margin-bottom:1rem}
-@media (max-width: 1023px) {
-  .popup{padding:2rem}
-}
-@media (max-width: 499px) {
-  .popup{padding:1.5rem}
-}
-
-/*
-	Адаптивное видео
-	====================
-*/
-.responsive_video{position:relative;padding-bottom:56.25%}
-.responsive_video iframe,.responsive_video .youtube{position:absolute;width:100%!important;height:100%!important}
-
-/*
-	Рамка документов
-	====================
-*/
-.frame{position:relative;display:block;border:0;padding:17px;box-shadow:0 8px 30px -5px rgba(0,0,0,0.5);transition:all .2s ease}
-.slider .frame{margin:5px 1.25rem 2rem}
-a.frame:hover{transform:translateY(-3px);box-shadow:0 8px 30px 0 rgba(0,0,0,0.5)}
-.frame::after{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background-size:100% 100%}
-a.frame::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;background:rgba(44,54,74,0.9) no-repeat center;background-size:3rem;transition:all .2s ease}
-a.frame:hover::before{opacity:1}
-
-/*
-	Спойлер отзывов
-	====================
-*/
-.review .spoiler{position:relative;overflow:hidden;transition:all .5s ease 0}
-.review .spoiler::before{content:"";position:absolute;bottom:0;width:100%;height:3rem;background: linear-gradient(0deg,#fff 1rem, rgb(255 255 255 / 0.01));transition: all .2s ease;}
-.review .spoiler.spoiler_visible{height:initial!important}
-.review .spoiler.spoiler_visible::before{bottom:-3rem}
-.review .spoiler + .more{color:var(--color);border-bottom:1px dashed;transition:all .3s ease;cursor:pointer}
-.review .spoiler + .more:hover{color:var(--color);border-bottom:1px dashed transparent}
-
-/*
-	Пагинация
-	====================
-*/
-#pagination{}
-#pagination .pages{display:flex;justify-content:center;border-top:1px solid #ececec;padding-top:2rem;margin-top:-2rem}
-#pagination .page-numbers{display:flex;width:2.5rem;height:2.5rem;justify-content:center;align-items:center;margin:0 5px}
-#pagination .page-numbers svg{width:1.5rem;height:1.5rem;fill:var(--color)}
-#pagination .page-numbers.current{background:var(--dark);font-weight:700;color:#fff}
-#pagination .page-numbers:hover{background:var(--color);color:#fff}
-#pagination .page-numbers:hover svg{fill:#fff}
-
-/*
-	Ленивая загрузка картинок
-	====================
-*/
-.lazy-image{position:relative;display:block}
-.lazy-image img{position:absolute;top:0;left:0;width:100%;height:auto}
-
-/*
-	Прогресс-бар для статей блога
-	====================
-*/
-#barholder {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0px;
-  background: #f5f5f5;
-  z-index: 2;
-}
-#barholder.visible {
-  height: 5px;
-}
-#barholder #barline {
-  background: var(--color);
-  height: 100%;
-}
-
-/*
-	Горизонтальная прокрутка при адаптиве
-	====================
-*/
-@media (max-width: 767px) {
-  .hor-scroll .row,
-  .hor-scroll .items {
-    flex-wrap: nowrap;
-    overflow: auto;
-    margin: 0;
-    display: flex !important;
-  }
-  .hor-scroll .col ,
-  .hor-scroll .item {
-    flex: 0 0 60%;
-    max-width: 60%;
-    padding: 0;
-  }
-}
-
-
-#edit-button {
-  position: fixed;
-  bottom: 6rem;
-  left: 2rem;
-  border: 0;
-  background: var(--btn_color_1);
-  z-index: 100000;
-  padding: 0.5rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  box-shadow: 0 0 30px -10px var(--btn_color_1);
-  transition: 0.15s linear;
-  filter: grayscale(1);
-}
-#edit-button a {
-  display: block;
-  border: 0;
-}
-#edit-button a svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: var(--btn_color_text);
-}
-#edit-button:hover {
-  filter: grayscale(0);
-}
-
-/*
-	Прайс-лист
-	====================
-*/
-.price-list {
-  max-width: 600px;
-}
-.price-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  font-size: 1rem !important;
-  margin: 0.5rem 0;
-  line-height: 1.3;
-}/*
-.price-list li::before {
-	display: none;
-}*/
-.price-list li::after {
-  content: "";
-  order: 1;
-  border-bottom: 1px dotted var(--gray);
-  flex-grow: 1;
-  margin: 0.9rem 1.5rem 0 0.5rem;
-}
-.price-list li .text_color{
-  order: 2;
-  font-weight: var(--f1ws);
-  white-space: nowrap;
-}
-
-@font-face {
-  font-family: "Ubuntu-Regular";
-  src: url("./fonts/Ubuntu-Regular.eot");
-  src: url("./fonts/Ubuntu-Regular.eot?#iefix") format("embedded-opentype"), url("./fonts/Ubuntu-Regular.woff") format("woff"), url("./fonts/Ubuntu-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Ubuntu-Bold";
-  src: url("./fonts/Ubuntu-Bold.eot");
-  src: url("./fonts/Ubuntu-Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/Ubuntu-Bold.woff") format("woff"), url("./fonts/Ubuntu-Bold.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-:root {
-  --f1: Ubuntu-Regular;
-  --f2: Ubuntu-Bold;
-  --color: #2ed0ff;
-  --color-txt: #4c4c4c;
-  --color_1: #ffb800;
-}
-body {
-  font-family: var(--f1);
-  color: var(--color-txt);
-}
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--f2);
-}
-h2,
-h3,
-h4 {
-  color: var(--color);
-}
-h1 {
-  font-size: 64px;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--color);
-  margin-bottom: 20px;
-}
-h1 + p {
-  font-size: 20px;
-}
-p {
-  font-size: 20px;
-  font-style: italic;
-  line-height: 1.3;
-}
-a,
-a:focus,
-a:active {
-  color: var(--color_link);
-  border-bottom-color: var(--color_link);
-  font-style: italic;
-}
-.page {
-  overflow: hidden;
-}
-.hero {
-  padding: 0 0 33px;
-}
-.container-fluid {
-  max-width: 1612px;
-}
-.hero__block {
-}
-.hero__image {
-  text-align: center;
-  margin-bottom: -3rem;
-}
-.hero__item {
-  text-align: center;
-  max-width: 58rem;
-  margin: 0 auto;
-  padding-bottom: 20px;
-}
-.hero__item span {
-  display: inline-block;
-  padding: 12px 36px;
-  background: var(--color_1);
-  font-size: 32px;
-  text-transform: uppercase;
-  color: #fff;
-  border-radius: 12px;
-}
 .header {
   padding: 20px 0;
   z-index: 999;
@@ -1169,7 +706,7 @@ a:active {
   top: 0;
   padding: 20px 34px;
   position: absolute;
-  background-color: #FEAFFF;
+  /*background-color: #FEAFFF;*/
   border-radius: 0 0 24px 24px;
   width: 100%;
 }
@@ -1203,12 +740,16 @@ a:active {
   align-items: center;
 }
 .header__menu ul li {
+  font-family: 'Ubuntu', sans-serif;
   font-size: 18px;
   text-transform: uppercase;
   cursor: pointer;
+  font-weight: 500;
   padding: 5px 16px;
   position: relative;
   display: block;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 9px;
 }
 .mess {
   position: absolute;
@@ -1272,6 +813,20 @@ a:active {
 .appElement__txt {
   flex: 1 1 100px;
 }
+
+.burger {
+  display: none;
+}
+
+.mobileMenu_Element {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
 /*
 ==============================
       xl 1599 - Декстопы (1440)
@@ -1285,6 +840,44 @@ a:active {
 
   .greenBlock_bottom {
     max-height: 470px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .header__menu ul li {
+    padding: 5px 10px;
+  }
+}
+
+@media screen and (max-width: 1085px) {
+  .mobileMenu {
+    /*justify-content: space-between;*/
+    column-gap: 30px;
+    display: flex;
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .header__block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 16px;
+    max-width: 44px;
+    min-width: 44px;
+    max-height: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+    cursor: pointer;
   }
 }
 /*
@@ -1320,18 +913,6 @@ a:active {
 sm 767 - Фаблеты	(500)
 ==============================
 */
-
-.burger {
-  display: none;
-}
-
-.mobileMenu_Element {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 18px;
-  line-height: 22px;
-  color: white;
-  text-transform: uppercase;
-}
 
 @media (max-width: 767px) {
 
@@ -2124,6 +1705,61 @@ a {
   row-gap: 10vh;
 }
 
+.blockBottom_blockImg {
+  position: relative;
+  height: 452px;
+}
+
+.blockBottom_blockImg .podlozhka {
+  z-index: 200;
+  position: absolute;
+  background-color: #CFA0FF;
+  border-radius: 24px;
+  width: 412px;
+  height: 412px;
+}
+
+.podlozhka_right {
+  right: 0px;
+  transform: rotateZ(14deg);
+}
+
+.podlozhka_left {
+  left: 0px;
+  transform: rotateZ(-14deg);
+}
+
+.blockBottom_blockImg img {
+  position: absolute;
+  z-index: 205;
+  min-width: 492px;
+  min-height: 492px;
+  max-width: 492px;
+  max-height: 492px;
+  top: -80px;
+}
+
+.blockImgLeft img {
+  left: -10px;
+}
+
+.blockImgRight img {
+  right: -10px;
+}
+
+.blockImgLeft img, .blockImgRight img {
+  transform: rotateZ(0deg);
+  transition: transform 0.3s ease;
+}
+
+.blockImgLeft:hover img {
+  transform: rotateZ(15deg);
+}
+
+.blockImgRight:hover img {
+  transform: rotateZ(-15deg);
+}
+
 @media screen and (max-width: 1024px) {
 
   .mainContent_blockPurple {
@@ -2178,6 +1814,7 @@ a {
 }
 
 .blockHigh_headerText p {
+  font-family: 'Ubuntu', sans-serif;
   font-style: normal !important;
 }
 
