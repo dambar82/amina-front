@@ -132,7 +132,9 @@ const Main = () => {
                             <p>
                                 «Әминә» проекты – нәни татар балаларында иң якын әйләнә-тирәне танып белү аша туган телләренә карата кызыксыну уяту, аны өйрәнү, башлангыч дәрәҗәдә аңлау өчен методик яктан эшләнгән кызыклы видеографик анимацион сериал.
                             </p>
-                            <button className={`${reviewsStyles.button} ${reviewsStyles.button_pink}`}>Тулырак</button>
+                            <Link to='/about'>
+                                <button className={`${reviewsStyles.button} ${reviewsStyles.button_pink}`}>Тулырак</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
