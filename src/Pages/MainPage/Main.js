@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
 import styles from './Main.module.scss';
+import reviewsStyles from '../Reviews/Reviews.module.scss';
 
 const url = 'https://api.multfilm.tatar/api/';
 
@@ -115,6 +116,25 @@ const Main = () => {
                     </Link>
                 </div>
                 <div className={'mainContent_blockPurpleSecond'}>
+                    <div className={'blockHigh'}>
+                        <div className={'blockHigh_headerPic'}>
+                            <img src="./img/about.png" alt=""/>
+                        </div>
+                    </div>
+                    <div className={styles.blockPurple_content}>
+                        <div className={styles.image}>
+                            <img src="/img/aboutPic.jpg" alt=""/>
+                        </div>
+                        <div className={styles.textBlock}>
+                            <p>
+                                Проект Казан мэриясе ярдәме белән «Татармультфильм» студиясе тарафыннан гамәлгә ашырылды.  Проект балалар өчен белем бирү, татар телен популярлаштыру юнәлешендәге мәдәни контентны  үстерүгә йөз тота.
+                            </p>
+                            <p>
+                                «Әминә» проекты – нәни татар балаларында иң якын әйләнә-тирәне танып белү аша туган телләренә карата кызыксыну уяту, аны өйрәнү, башлангыч дәрәҗәдә аңлау өчен методик яктан эшләнгән кызыклы видеографик анимацион сериал.
+                            </p>
+                            <button className={`${reviewsStyles.button} ${reviewsStyles.button_pink}`}>Тулырак</button>
+                        </div>
+                    </div>
                 </div>
                 <div className={'main_footer'}>
                     <p>
