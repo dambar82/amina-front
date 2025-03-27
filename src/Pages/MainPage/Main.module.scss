@@ -1,0 +1,75 @@
+.blockGreen_content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  width: 85%;
+}
+
+.songBLock {
+  background-color: white;
+  padding: 36px;
+  border-radius: 24px;
+  display: flex;
+  column-gap: 32px;
+
+  &_nota {
+    border-radius: 16px;
+    min-width: 64px;
+    max-width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    h1 {
+      font-family: Ubuntu;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: 0%;
+      text-transform: uppercase;
+      color: #4C4C4C;
+    }
+
+
+    .text {
+      max-height: 242px;
+      overflow: hidden;
+      font-family: Ubuntu;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0%;
+      color: #4C4C4C;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    .showMoreButton {
+      font-family: Ubuntu;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0%;
+      color: #FF69B0;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .blockGreen_content {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .blockGreen_content {
+    grid-template-columns: 1fr 1fr;
+  }
+}

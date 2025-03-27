@@ -1,6 +1,6 @@
 import {Route, Routes, useLocation} from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
-import Main from "./Pages/Main";
+import Main from "./Pages/MainPage/Main";
 import MultfilmPage from "./Pages/MultfilmPage";
 import {useEffect} from "react";
 import News from "./Pages/News";

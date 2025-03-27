@@ -24,7 +24,6 @@ const SongsText = () => {
         const getSongs = async () => {
             const response = await axios.get(`${url}amina/songs`);
             setSongs(response.data.data);
-            console.log(response.data.data)
         }
         getSongs()
     }, [])

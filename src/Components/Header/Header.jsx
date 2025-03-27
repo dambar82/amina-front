@@ -102,11 +102,19 @@ const Header = () => {
                                     <li className={`menuElement`} onClick={() => setMoreMenu(true)}>
                                         <span>күбрәк</span>
                                     </li>
-                                    <img
-                                        onClick={() => setMoreMenu(!moreMenu)}
-                                        src={moreMenu ? '/img/menuButtonLeft.svg' : '/img/menuButtonRight.svg'} alt=""
-                                        className={styles.galochka}
-                                    />
+                                    {location.pathname !== '/' ? (
+                                        <img
+                                            onClick={() => setMoreMenu(!moreMenu)}
+                                            src={moreMenu ? '/img/menuButtonLeft.svg' : '/img/menuButtonRight.svg'} alt=""
+                                            className={styles.galochka}
+                                        />
+                                    ) : (
+                                        <img
+                                            onClick={() => setMoreMenu(!moreMenu)}
+                                            src={moreMenu ? '/img/galochkaWhiteLeft.svg' : '/img/galochkaWhiteRight.svg'} alt=""
+                                            className={styles.galochka}
+                                        />
+                                    )}
                                     {/*</Link>*/}
                                 </>
                             ) : (
@@ -126,11 +134,19 @@ const Header = () => {
                                             Проектның методикасы
                                         </li>
                                     </Link>
-                                    <img
-                                        onClick={() => setMoreMenu(!moreMenu)}
-                                        src={moreMenu ? '/img/menuButtonLeft.svg' : '/img/menuButtonRight.svg'} alt=""
-                                        className={styles.galochka}
-                                    />
+                                    {location.pathname !== '/' ? (
+                                        <img
+                                            onClick={() => setMoreMenu(!moreMenu)}
+                                            src={moreMenu ? '/img/menuButtonLeft.svg' : '/img/menuButtonRight.svg'} alt=""
+                                            className={styles.galochka}
+                                        />
+                                    ) : (
+                                        <img
+                                            onClick={() => setMoreMenu(!moreMenu)}
+                                            src={moreMenu ? '/img/galochkaWhiteLeft.svg' : '/img/galochkaWhiteRight.svg'} alt=""
+                                            className={styles.galochka}
+                                        />
+                                    )}
                                 </>
                             )}
                         </ul>

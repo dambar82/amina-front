@@ -696,7 +696,7 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
 
 .headerMain li {
   color: white !important;
-  text-shadow: black 1px 0 1px;
+  font-weight: 500 !important;
 }
 
 .header {
@@ -1850,6 +1850,13 @@ a {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 1200px) {
+  .mainContent_blockGreen {
+    padding-top: 6vh;
+    row-gap: 4vh;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .mainContent_blockGreen {
     row-gap: 3vh !important;
@@ -2008,20 +2015,25 @@ p {
 .main_footer {
   height: 30vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  row-gap: 32px;
   flex-direction: column;
   text-align: center;
   color: white;
   margin: 0 auto;
-  width: 60%;
+  width: 40%;
   margin-bottom: auto;
 }
 
 .main_footer p {
+  opacity: 0.6;
   height: auto;
-  font-size: 16px !important;
-  line-height: 20px !important;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: Ubuntu;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 @media screen and (max-width: 762px) {
