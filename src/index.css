@@ -116,9 +116,6 @@ blockquote p:first-child {margin: 0 !important;}
 .text_bigger {font-size:2rem;margin:1.5rem 0;}
 .parent_title {color: var(--gray);}
 
-.header h2 ~ p,.subheader{font-size:1.25rem;font-weight:300;margin:-1.5rem 0 3rem;color:var(--gray);line-height:1.4;white-space:normal}
-.header h2 ~ p ~ p{font-size:1rem;color: var(--dark);}
-
 .link a, a.link {border-bottom: 1px solid var(--color_30);}
 .link a:hover, a.link:hover {border-bottom: 1px solid transparent;}
 
@@ -693,11 +690,20 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   display: block;
 }
 
+.headerMain {
+  background-color: #FEAFFF !important;
+}
+
+.headerMain li {
+  color: white !important;
+  text-shadow: black 1px 0 1px;
+}
 
 .header {
   padding: 20px 0;
   z-index: 999;
   position: relative;
+  background-color: white;
 }
 
 .mobileMenu {
@@ -744,11 +750,10 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   font-size: 18px;
   text-transform: uppercase;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 400;
   padding: 5px 16px;
   position: relative;
   display: block;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 9px;
 }
 .mess {
@@ -990,7 +995,7 @@ sm 767 - Фаблеты	(500)
 }
 
 .menuElement {
-  color: white;
+  color: #4C4C4C;
 }
 
 body {
@@ -1148,11 +1153,13 @@ body {
   font-weight: 500;
   line-height: 24px;
   text-align: left;
+  z-index: 10;
 }
 
 .thumbnail_title p {
   text-transform: uppercase;
   font-style: normal !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .modal {

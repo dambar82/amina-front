@@ -5,6 +5,7 @@ import {Link, useLocation} from "react-router-dom";
 const Header = () => {
     const location = useLocation();
     const [mobileMenuShow, setMobileMenuShow] = useState(false);
+    const [moreMenu, setMoreMenu] = useState(false);
 
     const getBackgroundColor = () => {
         switch (location.pathname) {
@@ -22,7 +23,7 @@ const Header = () => {
     };
 
     return (
-        <header className="header">
+        <header className={`header ${location.pathname === '/' ? 'headerMain' : ''}`}>
             {mobileMenuShow && (
                 <div className={`mobileMenu ${getBackgroundColor()}`}>
                     <div className="mobileMenu_menu" >
@@ -37,11 +38,11 @@ const Header = () => {
                                     Җырлар
                                 </li>
                             </Link>
-                            <Link to='/reviews'>
-                                <li className="mobileMenu_Element">
-                                    Отзывлар
-                                </li>
-                            </Link>
+                            {/*<Link to='/reviews'>*/}
+                            {/*    <li className="mobileMenu_Element">*/}
+                            {/*        Отзывлар*/}
+                            {/*    </li>*/}
+                            {/*</Link>*/}
                         </ul>
                     </div>
                     <div className={'burger'} onClick={() => setMobileMenuShow(false)}>
@@ -62,61 +63,76 @@ const Header = () => {
                     </div>
                     <div className="header__menu">
                         <ul>
-                            <Link to='/multfilm'>
-                                <li className={`menuElement ${location.pathname === '/multfilm' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>
-                                    Мультфильмнар
-                                    <div className="appElement">
-                                        <div className="appElement_box">
-                                            <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                            <div className="appElement__txt">Бүлек эшләнә</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </Link>
-                            <Link to='/reviews'>
-                                <li className={`menuElement ${location.pathname === '/reviews' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>
-                                    Отзывлар
-                                    <div className="appElement">
-                                        <div className="appElement_box">
-                                            <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                            <div className="appElement__txt">Отзывлар</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </Link>
-                            <Link to='/songs_text'>
-                                <li className={`menuElement ${location.pathname === '/songs_text' ? `${styles.active} ${styles.active_about}` : ''}`}>
-                                    Җыр сүзләре
-                                    <div className="appElement">
-                                        <div className="appElement_box">
-                                            <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                            <div className="appElement__txt">Җыр сүзләре </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </Link>
-                            <Link to='/songs'>
-                                <li className={`menuElement ${location.pathname === '/songs' ? `${styles.active} ${styles.active_songs}` : ''}`}>
-                                    Җырлар
-                                    <div className="appElement">
-                                        <div className="appElement_box">
-                                            <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                            <div className="appElement__txt">Бүлек эшләнә</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </Link>
-                            <Link to='/about'>
-                                <li className={`menuElement ${location.pathname === '/about' ? `${styles.active} ${styles.active_about}` : ''}`}>
-                                    Проект турында
-                                    <div className="appElement">
-                                        <div className="appElement_box">
-                                            <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                            <div className="appElement__txt">Проект турында</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </Link>
+                            {!moreMenu ? (
+                                <>
+                                    <Link to='/multfilm'>
+                                        <li className={`menuElement ${location.pathname === '/multfilm' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>
+                                            Мультфильмнар
+                                            <div className="appElement">
+                                                <div className="appElement_box">
+                                                    <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
+                                                    <div className="appElement__txt">Бүлек эшләнә</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                    <Link to='/songs'>
+                                        <li className={`menuElement ${location.pathname === '/songs' ? `${styles.active} ${styles.active_songs}` : ''}`}>
+                                            Җырлар
+                                            <div className="appElement">
+                                                <div className="appElement_box">
+                                                    <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
+                                                    <div className="appElement__txt">Бүлек эшләнә</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                    <Link to='/songs_text'>
+                                        <li className={`menuElement ${location.pathname === '/songs_text' ? `${styles.active} ${styles.active_about}` : ''}`}>
+                                            Җыр сүзләре
+                                            <div className="appElement">
+                                                <div className="appElement_box">
+                                                    <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
+                                                    <div className="appElement__txt">Җыр сүзләре </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                    {/*<Link to='/about'>*/}
+                                    <li className={`menuElement`} onClick={() => setMoreMenu(true)}>
+                                        <span>күбрәк</span>
+                                    </li>
+                                    <img
+                                        onClick={() => setMoreMenu(!moreMenu)}
+                                        src={moreMenu ? '/img/menuButtonLeft.svg' : '/img/menuButtonRight.svg'} alt=""
+                                        className={styles.galochka}
+                                    />
+                                    {/*</Link>*/}
+                                </>
+                            ) : (
+                                <>
+                                    <Link to='/reviews'>
+                                        <li className={`menuElement ${location.pathname === '/reviews' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>
+                                            Бәяләмәләр
+                                        </li>
+                                    </Link>
+                                    <Link to='/about'>
+                                        <li className={`menuElement ${location.pathname === '/about' ? `${styles.active} ${styles.active_about}` : ''}`}>
+                                            Проект турында
+                                        </li>
+                                    </Link>
+                                    <Link to='/method'>
+                                        <li className={`menuElement ${location.pathname === '/method' ? `${styles.active} ${styles.active_about}` : ''}`}>
+                                            Проектның методикасы
+                                        </li>
+                                    </Link>
+                                    <img
+                                        onClick={() => setMoreMenu(!moreMenu)}
+                                        src={moreMenu ? '/img/menuButtonLeft.svg' : '/img/menuButtonRight.svg'} alt=""
+                                        className={styles.galochka}
+                                    />
+                                </>
+                            )}
                         </ul>
                     </div>
                 </div>

@@ -1,18 +1,18 @@
 .active {
   text-shadow: none !important;
-  background-color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 .active_multfilm {
-  color: #8A60EB;
+  background-color: #8A60EB;
 }
 
 .active_songs {
-  color: #D07DFB;
+  background-color: #D07DFB;
 }
 
 .active_about {
-  color: #00BDF6;
+  background-color: #00BDF6;
 }
 
 .mainBackground {
@@ -29,4 +29,8 @@
 
 .reviewsBackground {
 
+}
+
+.galochka {
+ cursor: pointer;
 }

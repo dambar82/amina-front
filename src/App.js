@@ -55,6 +55,7 @@ function App() {
                     mobileMenuSongs.style.background = 'linear-gradient(280deg, #CDBEFF -1.76%, #B8A3FF 100%)';
                 }
                 break;
+            case '/method':
             case '/about':
                 document.body.style.background = 'linear-gradient(297.92deg, #739BFF 33.58%, #9B99FF 100%)';
                 const mobileMenuAbout = document.querySelector('.mobileMenu');
@@ -87,6 +88,7 @@ function App() {
             <Route path='/multfilm' element={<MultfilmPage/>}/>
             <Route path='/reviews' element={<Reviews/>}></Route>
             <Route path='/about' element={<About/>}></Route>
+            <Route path='/method' element={<About/>}></Route>
             <Route path='/songs' element={<Songs/>}/>
             <Route path='/songs_text' element={<SongsText/>}></Route>
         </Route>
