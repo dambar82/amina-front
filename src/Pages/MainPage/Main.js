@@ -1,6 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import styles from './Main.module.scss';
+
+const url = 'https://api.multfilm.tatar/api/';
+
+const colors = ['#94EBFF', '#FF7DB9', '#B9FF43'];
 
 const Main = () => {
 
@@ -17,6 +22,16 @@ const Main = () => {
 
         return `${day}.${month}`;
     }
+
+    const [songs, setSongs] = useState([]);
+
+    useEffect(() => {
+        const getSongs = async () => {
+            const response = await axios.get(`${url}amina/songs`);
+            setSongs(response.data.data);
+        }
+        getSongs()
+    }, [])
 
     return (
         <>
@@ -62,10 +77,37 @@ const Main = () => {
                 </div>
                 <div className={'mainContent_blockGreen'}>
                     <div className={'blockHigh'}>
+                        <div className={'blockHigh_headerPic'}>
+                            <img src="./img/songText.png" alt=""/>
+                        </div>
                     </div>
-                    <div className={'greenBlock_bottom'}>
+                    <div className={styles.blockGreen_content}>
+                        {
+                            songs.slice(0, 3).map((song, index) => (
+                                <div className={styles.songBLock}>
+                                    <div
+                                        className={styles.songBLock_nota}
+                                        style={{ backgroundColor: colors[index % colors.length] }}
+                                    >
+                                        <img src="/img/whiteNota.svg" alt=""/>
+                                    </div>
+                                    <div className={styles.songBLock_content}>
+                                        <h1>{song.title}</h1>
+                                        <div className={`${styles.text}`}
+                                             dangerouslySetInnerHTML={{__html: song.content}}
+                                        ></div>
+                                        <Link to='/songs_text'>
+                                            <div className={styles.showMoreButton}
+                                            >
+                                                Показать полностью
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
-                    <Link to='/news'>
+                    <Link to='/songs_text'>
                         <div className={'showMoreButton'}>
                             <span>Показать больше</span>
                             <img src="./img/arrow.png" alt=""/>
@@ -79,7 +121,7 @@ const Main = () => {
                         Проект Казан мэриясе ярдәме белән «Татармультфильм» студиясе тарафыннан гамәлгә ашырылды.  Проект балалар өчен белем бирү, татар телен популярлаштыру юнәлешендәге мәдәни контентны  үстерүгә йөз тота.
                     </p>
                     <p>
-                        © 2024 «Амина». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
+                        © 2024 «Әминә». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
                     </p>
                 </div>
             </div>
