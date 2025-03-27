@@ -75,9 +75,9 @@ const MultfilmPage = () => {
                     {
                         videos.map((item, index) => (
                             <div className={'videoBlock'} key={index} onClick={() => handleThumbnailClick(item)}>
-                                <img src={item.preview} alt={item.title} className={'thumbnail'} />
+                                <img src={item.preview} alt={item.name} className={'thumbnail'} />
                                 <div className={'thumbnail_title'}>
-                                    <p>{item.title}</p>
+                                    <p>{item.name}</p>
                                     <video
                                         style={{ display: 'none' }} // скрываем видео
                                         onLoadedMetadata={(e) => handleLoadedMetadata(index, e.target.duration)}
