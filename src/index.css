@@ -1104,6 +1104,11 @@ body {
   border-radius: 24px;
   overflow: hidden;
   position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.videoBlock:hover {
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 1024px) {
@@ -1427,6 +1432,11 @@ a {
   line-height: 22px;
   text-transform: uppercase;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.songItem:hover {
+  transform: scale(1.03);
 }
 
 .songItem_current {
