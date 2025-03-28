@@ -94,12 +94,20 @@
 }
 
 .reviews_list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Колонки одинаковой ширины */
-  grid-auto-flow: dense; /* Заполняем пустые места */
-  gap: 20px; /* Отступы между карточками */
+  column-count: 2; /* Две колонки */
+  column-gap: 20px; /* Отступы между колонками */
 }
 
 .reviews_card {
-  background-color: white;
+  display: inline-block; /* Важно, чтобы карточки не растягивались */
+  width: 100%; /* Чтобы карточка правильно вставлялась в колонку */
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  margin-bottom: 20px;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
 }
