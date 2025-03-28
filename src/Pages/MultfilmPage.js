@@ -86,9 +86,9 @@ const MultfilmPage = () => {
                                     </video>
 
                                     {/* Display duration */}
-                                    {videoDurations[index] && (
-                                        <p className="duration">{videoDurations[index]}</p>
-                                    )}
+                                    {/*{videoDurations[index] && (*/}
+                                    {/*    <p className="duration">{videoDurations[index]}</p>*/}
+                                    {/*)}*/}
                                 </div>
                             </div>
                         ))

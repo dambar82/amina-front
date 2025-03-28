@@ -1147,7 +1147,7 @@ body {
   height: 40px;
   position: absolute;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   left: 0px;
   bottom: 1px;
@@ -1157,11 +1157,12 @@ body {
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
-  text-align: left;
+  text-align: center !important;
   z-index: 10;
 }
 
 .thumbnail_title p {
+  text-align: center !important;
   text-transform: uppercase;
   font-style: normal !important;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
