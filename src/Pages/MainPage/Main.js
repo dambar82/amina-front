@@ -100,7 +100,7 @@ const Main = () => {
                                         <Link to='/songs_text'>
                                             <div className={styles.showMoreButton}
                                             >
-                                                Показать полностью
+                                                Тулысынча күрсәтергә
                                             </div>
                                         </Link>
                                     </div>
