@@ -90,7 +90,7 @@ const Reviews = () => {
                     <div className={styles.reviews_list}>
                         {reviews.map(review => (
                             <div key={review.id} className={styles.reviews_card}>
-                                <h3>{review.author}</h3>
+                                <h3>{review.organization}</h3>
                                 <p>{review.text}</p>
                                 {review.image && <img src={review.image} alt="Отзыв" />}
                             </div>
