@@ -16,7 +16,7 @@ const Songs = () => {
 
     const pics = ['./img/songPink.png', './img/songPurple.png', './img/songGreen.png']
 
-    const [imgSrc, setImgSrc] = useState('./img/songsBig.png');
+    const [imgSrc, setImgSrc] = useState('./img/oblozhki/songsBig.png');
 
     const updateImage = () => {
 
@@ -25,7 +25,7 @@ const Songs = () => {
         } else if (window.innerWidth < 1024) {
             setImgSrc('./img/SongsHeaderImage1024.png');
         } else {
-            setImgSrc('./img/SongsHeaderImage.png');
+            setImgSrc('./img/oblozhki/songsBig.png');
         }
     };
 
