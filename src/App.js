@@ -1,11 +1,11 @@
 import {Route, Routes, useLocation} from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
 import Main from "./Pages/MainPage/Main";
-import MultfilmPage from "./Pages/MultfilmPage";
+import MultfilmPage from "./Pages/Multfilm/MultfilmPage";
 import {useEffect} from "react";
 import News from "./Pages/News";
 import Book from "./Pages/Book";
-import Songs from "./Pages/Songs";
+import Songs from "./Pages/Songs/Songs";
 import Reviews from "./Pages/Reviews/Reviews";
 import About from "./Pages/AboutPage/About";
 import SongsText from "./Pages/SongsText/SongsText";
@@ -86,7 +86,8 @@ function App() {
         <Route path='/' element={<MainLayout/>}>
             <Route path='/' element={<Main/>}/>
             <Route path='/multfilm' element={<MultfilmPage/>}/>
-            {/*<Route path='/reviews' element={<Reviews/>}></Route>*/}
+            <Route path='/news' element={<News/>}/>
+            <Route path='/reviews' element={<Reviews/>}></Route>
             <Route path='/about' element={<About/>}></Route>
             <Route path='/method' element={<About/>}></Route>
             <Route path='/songs' element={<Songs/>}/>

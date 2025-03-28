@@ -87,7 +87,7 @@ const News = () => {
                                             dangerouslySetInnerHTML={{__html: newsItem.content}}
                                             style={{
                                                 padding: '10px 0',
-                                                maxHeight: expandedNews[index] ? 'none' : '100px',
+                                                maxHeight: expandedNews[index] ? '1000px' : '120px',
                                                 overflow: 'hidden'
                                             }}
                                         />

@@ -54,12 +54,12 @@ const Header = () => {
                 <div className="header__block">
                     <div className="header__logo">
                         <Link to='/'>
-                            <img src="/img/logo.svg" alt=""/>
+                            <img src="/img/logo.png" alt=""/>
                         </Link>
                         <div className="header__city"></div>
                     </div>
                     <div className={'burger'} onClick={() => setMobileMenuShow(true)}>
-                        <img src="./img/burgerIcon.svg" alt=""/>
+                        <img src={location.pathname === '/' ? "./img/burgerIconWhite.svg" : "./img/burgerIcon.svg"} alt=""/>
                     </div>
                     <div className="header__menu">
                         <ul>
@@ -119,11 +119,11 @@ const Header = () => {
                                 </>
                             ) : (
                                 <>
-                                    {/*<Link to='/reviews'>*/}
-                                    {/*    <li className={`menuElement ${location.pathname === '/reviews' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>*/}
-                                    {/*        Бәяләмәләр*/}
-                                    {/*    </li>*/}
-                                    {/*</Link>*/}
+                                    <Link to='/reviews'>
+                                        <li className={`menuElement ${location.pathname === '/reviews' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>
+                                            Бәяләмәләр
+                                        </li>
+                                    </Link>
                                     <Link to='/about'>
                                         <li className={`menuElement ${location.pathname === '/about' ? `${styles.active} ${styles.active_about}` : ''}`}>
                                             Проект турында

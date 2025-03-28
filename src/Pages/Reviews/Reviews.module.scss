@@ -1,7 +1,9 @@
 .reviews {
-  border: 1px solid red;
   max-width: 1512px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
 
   &_header {
     display: flex;
@@ -34,6 +36,70 @@
 .sort {
   position: relative;
   &_value {
-
+    padding: 16px 32px;
+    width: 279px;
+    background-color: #B199FF;
+    border: 2px solid #FFFFFF;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    font-family: Ubuntu;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      overflow: hidden;
+      width: 90%;
+      text-overflow: ellipsis;
+      white-space: nowrap !important;
+    }
+    &._active {
+      & + .sort_select {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
+  &_select {
+    width: 100%;
+    position: absolute;
+    border: 2px solid #FFFFFF;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 12px;
+    bottom: -180px;
+    transition: all .3s ease;
+
+    & > div {
+      padding: 16px 32px;
+      font-family: Ubuntu;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0%;
+      color: white;
+      background-color: #B8A2FF;
+      border-bottom: 1px solid #C1B3EE;
+      cursor: pointer;
+      &._active {
+        background-color: #A78EF4;
+      }
+    }
+  }
+}
+
+.reviews_list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Колонки одинаковой ширины */
+  grid-auto-flow: dense; /* Заполняем пустые места */
+  gap: 20px; /* Отступы между карточками */
+}
+
+.reviews_card {
+  background-color: white;
 }

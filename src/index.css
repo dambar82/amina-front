@@ -183,7 +183,7 @@ blockquote p:first-child {margin: 0 !important;}
   h1{word-break:break-word;font-size:2.25rem; line-height: 1.2;}
   blockquote {padding: 1.5rem 0rem 1.5rem 6rem;}
   blockquote .blockquote-icon {width: 4rem;height: 4rem;}
-  .header p:nth-child(2), .subheader {font-size: 1.125rem;}
+  /*.header p:nth-child(2), .subheader {font-size: 1.125rem;}*/
   .sepa {padding: 0 5px;}
 }
 
@@ -699,6 +699,10 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   font-weight: 500 !important;
 }
 
+.container-fluid {
+  padding: 0 !important;
+}
+
 .header {
   padding: 20px 0;
   z-index: 999;
@@ -876,7 +880,6 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
     justify-content: center;
     align-items: center;
     background-color: white;
-    padding: 16px;
     max-width: 44px;
     min-width: 44px;
     max-height: 44px;
@@ -1003,7 +1006,7 @@ body {
 }
 
 .pageWrapper {
-  padding: 48px 0;
+  padding: 48px 0 0 0;
 }
 
 .slider {
@@ -1073,21 +1076,42 @@ body {
   right: 40px;
 }
 
-@media screen and (max-width: 1440px) {
-  .pageWrapper {
-    padding: 48px 3rem;
-  }
-}
-
 .pageHeaderImage {
+  position: relative;
   display: flex;
   justify-content: center;
-  max-width: 1512px;
+  max-width: 1472px;
   margin: 0 auto;
 }
 
+.pageHeaderImage span {
+  position: absolute;
+  color: white;
+  font-family: Ubuntu;
+  font-weight: 700;
+  font-size: 76px;
+  line-height: 92px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .pageContent {
+  margin: 0 auto;
+  max-width: 1472px;
   padding: 48px 0;
+}
+
+@media screen and (max-width: 1440px) {
+
+  header {
+    padding: 20px 3rem !important;
+  }
+
+  .pageWrapper {
+    padding: 48px 3rem;
+  }
 }
 
 .mulfilm_grid {
@@ -1230,7 +1254,6 @@ video {
 }
 
 .newsItem_text {
-  /*max-height: 200px;*/
   overflow: hidden;
   text-overflow: ellipsis;
   display: flex;

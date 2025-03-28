@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './About.module.scss';
 import {useLocation} from "react-router-dom";
+import multfilmStyles from "../Multfilm/Multfilm.module.scss";
 
 const About = () => {
     const location = useLocation();
@@ -41,6 +42,14 @@ const About = () => {
                     </div>
                 </div>
                 <img className={styles.aminaPic} src="/img/aminaAboutPic.png" alt=""/>
+            </div>
+            <div className={`${multfilmStyles.footer} ${styles.footer_about}`}>
+                <p>
+                    Проект Казан мэриясе ярдәме белән «Татармультфильм» студиясе тарафыннан гамәлгә ашырылды.  Проект балалар өчен белем бирү, татар телен популярлаштыру юнәлешендәге мәдәни контентны  үстерүгә йөз тота.
+                </p>
+                <p>
+                    © 2024 «Әминә». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
+                </p>
             </div>
         </div>
     );
