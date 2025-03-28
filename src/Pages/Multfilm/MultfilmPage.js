@@ -11,7 +11,7 @@ const MultfilmPage = () => {
 
     const [videoDurations, setVideoDurations] = useState({});
 
-    const [imgSrc, setImgSrc] = useState('./img/MultfilmHeaderImage.png');
+    const [imgSrc, setImgSrc] = useState('./img/oblozhki/multfilmBig.png');
 
     const updateImage = () => {
         // Проверяем ширину экрана и меняем изображение в зависимости от этого
@@ -20,7 +20,7 @@ const MultfilmPage = () => {
         } else if (window.innerWidth < 1024) {
             setImgSrc('./img/MultfilmHeaderImage1024.png'); // Изображение для средних экранов
         } else {
-            setImgSrc('./img/MultfilmHeaderImage.png'); // Изображение для больших экранов
+            setImgSrc('./img/oblozhki/multfilmBi.png'); // Изображение для больших экранов
         }
     };
 
@@ -70,6 +70,7 @@ const MultfilmPage = () => {
         <div className={'pageWrapper'}>
             <div className={'pageHeaderImage'}>
                 <img src={imgSrc} alt=""/>
+                <span>Мультфильмнар</span>
             </div>
             <div className={'pageContent'}>
                 <div className={'mulfilm_grid'}>
