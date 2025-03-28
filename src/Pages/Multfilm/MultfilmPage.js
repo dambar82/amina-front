@@ -20,7 +20,7 @@ const MultfilmPage = () => {
         } else if (window.innerWidth < 1024) {
             setImgSrc('./img/MultfilmHeaderImage1024.png'); // Изображение для средних экранов
         } else {
-            setImgSrc('./img/oblozhki/multfilmBi.png'); // Изображение для больших экранов
+            setImgSrc('./img/oblozhki/multfilmBig.png'); // Изображение для больших экранов
         }
     };
 
