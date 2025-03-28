@@ -88,11 +88,11 @@ const Reviews = () => {
                         </div>
                     </div>
                     <div className={styles.reviews_list}>
-                        {reviews.map(review => (
+                        {[...reviews, ...reviews].map(review => (
                             <div key={review.id} className={styles.reviews_card}>
                                 <h3>{review.organization}</h3>
                                 <p>{review.text}</p>
-                                {review.image && <img src={review.image} alt="Отзыв" />}
+                                {review.images && <img src={review.images[0]} alt="Отзыв" />}
                             </div>
                         ))}
                     </div>
