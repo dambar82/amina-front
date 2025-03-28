@@ -110,7 +110,7 @@ const Main = () => {
                     </div>
                     <Link to='/songs_text'>
                         <div className={'showMoreButton'}>
-                            <span>Показать больше</span>
+                            <span>Күбрәк күрсәтергә</span>
                             <img src="./img/arrow.png" alt=""/>
                         </div>
                     </Link>
