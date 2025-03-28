@@ -61,7 +61,7 @@ const SongsText = () => {
                                     <div className={styles.showMoreButton}
                                          onClick={() => toggleExpand(song.id)}
                                     >
-                                        {expandedSongs[song.id] ? "Скрыть" : "Показать полностью"}
+                                        {expandedSongs[song.id] ? "Төреп куярга" : "Тулысынча күрсәтергә"}
                                     </div>
                                 </div>
                                 <div className={styles.song_pic}>
