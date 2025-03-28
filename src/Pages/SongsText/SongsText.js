@@ -42,6 +42,7 @@ const SongsText = () => {
         <div className={'pageWrapper'}>
             <div className={'pageHeaderImage'}>
                 <img src={imgSrc} alt=""/>
+                <span>Җыр сүзләре</span>
             </div>
             <div className={'pageContent'}>
                 <div className={styles.songsText}>
