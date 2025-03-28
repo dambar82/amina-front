@@ -16,7 +16,7 @@ const Songs = () => {
 
     const pics = ['./img/songPink.png', './img/songPurple.png', './img/songGreen.png']
 
-    const [imgSrc, setImgSrc] = useState('./img/SongsHeaderImage.png');
+    const [imgSrc, setImgSrc] = useState('./img/songsBig.png');
 
     const updateImage = () => {
 
@@ -130,6 +130,7 @@ const Songs = () => {
         <div className={'pageWrapper'}>
             <div className={'pageHeaderImage'}>
                 <img src={imgSrc} alt=""/>
+                <span>Җырлар</span>
             </div>
             <div className={'pageContent'}>
                 <div className={'songsContent'}>
