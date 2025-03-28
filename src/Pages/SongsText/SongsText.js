@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './SongsText.module.scss';
 import axios from "axios";
+import multfilmStyles from "../Multfilm/Multfilm.module.scss";
 
 const colors = ['#94EBFF', '#FF7DB9', '#CFA0FF', '#B9FF43'];
 
@@ -71,6 +72,14 @@ const SongsText = () => {
                         ))
                     }
                 </div>
+            </div>
+            <div className={`${multfilmStyles.footer} ${styles.footer_songText}`}>
+                <p>
+                    Проект Казан мэриясе ярдәме белән «Татармультфильм» студиясе тарафыннан гамәлгә ашырылды.  Проект балалар өчен белем бирү, татар телен популярлаштыру юнәлешендәге мәдәни контентны  үстерүгә йөз тота.
+                </p>
+                <p>
+                    © 2024 «Әминә». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
+                </p>
             </div>
         </div>
     );

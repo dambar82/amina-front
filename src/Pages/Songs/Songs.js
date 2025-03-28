@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
+import styles from "../Multfilm/Multfilm.module.scss";
 
 const Songs = () => {
 
@@ -192,6 +193,14 @@ const Songs = () => {
                     </div>
                 </div>
             )}
+            <div className={`${styles.footer} ${styles.footer_multfilm}`}>
+                <p>
+                    Проект Казан мэриясе ярдәме белән «Татармультфильм» студиясе тарафыннан гамәлгә ашырылды.  Проект балалар өчен белем бирү, татар телен популярлаштыру юнәлешендәге мәдәни контентны  үстерүгә йөз тота.
+                </p>
+                <p>
+                    © 2024 «Әминә». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
+                </p>
+            </div>
         </div>
     );
 };
