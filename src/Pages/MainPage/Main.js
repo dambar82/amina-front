@@ -85,7 +85,7 @@ const Main = () => {
                     <div className={styles.blockGreen_content}>
                         {
                             songs.slice(0, 3).map((song, index) => (
-                                <div className={styles.songBLock}>
+                                <div className={styles.songBLock} key={song.id}>
                                     <div
                                         className={styles.songBLock_nota}
                                         style={{ backgroundColor: colors[index % colors.length] }}
