@@ -945,7 +945,6 @@ sm 767 - Фаблеты	(500)
     justify-content: center;
     align-items: center;
     background-color: white;
-    padding: 16px;
     max-width: 44px;
     min-width: 44px;
     max-height: 44px;
@@ -1680,6 +1679,7 @@ a {
 }
 
 .mainContent {
+  overflow: hidden;
   position: relative;
   width: 100%;
   /*min-height: 5020px;*/
@@ -1801,10 +1801,36 @@ a {
   transform: rotateZ(-15deg);
 }
 
+@media screen and (max-width: 1700px) {
+  .blockBottom {
+    width: 90%;
+    position: relative;
+    justify-content: space-between;
+  }
+
+  .blockBottom_blockImg .podlozhka {
+    width: 330px;
+    height: 330px;
+  }
+
+  .blockBottom_blockImg img {
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    top: -60px;
+  }
+
+  .blockImgRight img {
+    right: -20px;
+  }
+}
+
+
 @media screen and (max-width: 1024px) {
 
   .mainContent_blockPurple {
-    justify-content: space-around;
+    row-gap: 30vh;
   }
 
   .blockHigh {
@@ -2022,25 +2048,6 @@ p {
   align-items: center;
 }
 
-@media screen and (max-width: 1024px) {
-  .mainContent_blockPurpleSecond {
-  }
-
-  .blockBottom {
-
-  }
-
-  .blockBottomPurpleSecond {
-    flex-direction: column;
-    row-gap: 30px;
-  }
-
-  .bookTextBlock {
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 .bookPic {
   border-radius: 24px;
   overflow: hidden;
@@ -2070,8 +2077,87 @@ p {
   text-align: center;
 }
 
+@media screen and (max-width: 1400px) {
+  .main_footer {
+    width: 70% !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .mainContent_blockPurpleSecond {
+    padding: 24vh 0 0 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .mainContent_blockPurpleSecond {
+  }
+
+  .blockBottom {
+
+  }
+
+  .blockBottomPurpleSecond {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  .bookTextBlock {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 885px) {
+  .blockBottom_blockImg .podlozhka {
+    transform: rotateZ(0);
+  }
+
+  .blockImgRight img{
+    transform: rotateZ(-15deg) !important;
+  }
+  .blockImgLeft img{
+    transform: rotateZ(15deg) !important;
+  }
+  .blockBottom {
+    width: 99%;
+  }
+}
+
+
 @media screen and (max-width: 762px) {
+
+  .blockBottom {
+    flex-direction: column;
+  }
+
+  .blockBottom_block {
+    width: 100% !important;
+    height: auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainContent_blockPurple {
+    row-gap: 15vh;
+  }
+
+  .blockBottom img {
+    position: static;
+  }
+
+  .blockBottom_blockImg .podlozhka {
+    display: none;
+  }
+
   .main_footer p {
 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main_footer {
+    width: 95% !important;
   }
 }
