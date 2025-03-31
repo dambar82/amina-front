@@ -46,6 +46,21 @@ const Reviews = () => {
     const [fio, setFio] = useState('');
     const [job, setJob] = useState('');
     const [email, setEmail] = useState('');
+    const fileInputRef = React.useRef(null);
+    const [files, setFiles] = useState([])
+
+    const handleAttachClick = () => {
+        fileInputRef.current.click();
+    };
+
+    const handleFileChange = (event) => {
+        const selectedFiles  = event.target.files;
+        const newFiles = Array.from(selectedFiles).map((file, index) => ({
+            id: Date.now() + index, // уникальный id для каждого файла
+            file: file
+        }));
+        setFiles(prevFiles => [...prevFiles, ...newFiles]);
+    };
 
     const [formData, setFormData] = useState({
         institution: "Мәктәп",
@@ -140,13 +155,21 @@ const Reviews = () => {
         checkOverflow();
     }, [reviews]);
 
+    const deleteFile = ( fileId ) => {
+        setFiles(prev => prev.filter(el => el.id !== fileId))
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+    }
+
     return (
         <>
             {showForm && (
                 <div className={styles.overlay} onClick={() => setShowForm(false)}>
                     <div className={styles.reviewForm} onClick={(e) => e.stopPropagation()}>
                         <h1>Фикер калдырырга</h1>
-                        <form action="">
+                        <form onSubmit={handleSubmit}>
                             <div className={styles.inputs}>
                                 <div className={styles.grid}>
                                     <div className={styles.select}>
@@ -236,6 +259,45 @@ const Reviews = () => {
                                         />
                                     </div>
                                 </div>
+                                <div className={styles.input_wrapper}>
+                                    <label>Үз тәҗрибәгез турында сөйләгез</label>
+                                    <div className={styles.input_custom}>
+                                        <div className={styles.textarea_wrapper}>
+                                            <textarea
+                                               type="text"
+                                               placeholder='Бәяләмә тексты. Нәрсә ошады? Нәрсәне яхшыртырга мөмкин? Балаларның мультсериалга мөнәсәбәте?'
+                                            />
+                                            <div className={styles.textarea_wrapper_low}>
+                                                <button onClick={handleAttachClick}><img src="./img/attachPic.svg" alt=""/><span>Рәсем өстәргә</span></button>
+                                                <input
+                                                    type="file"
+                                                    accept="image/*"
+                                                    ref={fileInputRef}
+                                                    style={{ display: 'none' }}
+                                                    onChange={handleFileChange}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {files.length > 0 && (
+                                <div className={styles.files}>
+                                    {files.map(file => (
+                                        <div key={file.id} className={styles.file}>
+                                            <span>{file?.file.name}</span>
+                                            <img src="./img/deletePic.svg" alt="" onClick={() => deleteFile(file.id)}/>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                            <div className={styles.buttons}>
+                                <button className={`${styles.button} ${styles.button_pink}`}>
+                                    Фикер калдырырга
+                                </button>
+                                <button className={`${styles.button}`} onClick={() => setShowForm(false)}>
+                                    Фикер калдырырга
+                                </button>
                             </div>
                         </form>
                     </div>
