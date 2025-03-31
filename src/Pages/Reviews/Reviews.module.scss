@@ -250,7 +250,7 @@
 .reviewForm {
   width: 906px;
   height: auto;
-  max-height: 90vh;
+  max-height: 95vh;
   padding: 32px;
   border-radius: 24px;
   background-color: #FFFFFF;
@@ -271,6 +271,37 @@
     display: flex;
     flex-direction: column;
     row-gap: 24px;
+
+    .files {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+
+      .file {
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+        span {
+          font-family: Ubuntu;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 16px;
+          letter-spacing: 0%;
+          vertical-align: middle;
+          color: #4C4C4C;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      column-gap: 12px;
+      button {
+        margin-right: 0;
+      }
+    }
 
     .inputs {
       display: flex;
@@ -294,6 +325,55 @@
         .input_custom {
           border-radius: 12px;
           background-color: #F3F0FF;
+
+          .textarea_wrapper {
+            width: 100%;
+            padding: 17px 20px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            row-gap: 10px;
+
+            button {
+              background: transparent;
+              padding: 10px 12px;
+              border: 1px solid #4C4C4C;
+              border-radius: 6px;
+              cursor: pointer;
+              font-family: Ubuntu;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 20px;
+              letter-spacing: 0%;
+              vertical-align: middle;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              column-gap: 8px;
+            }
+
+            &_low {
+              display: flex;
+            }
+            textarea {
+              height: 160px;
+              width: 100%;
+              background-color: transparent !important;
+              outline: none;
+              border: none;
+              font-family: Ubuntu;
+              font-weight: 400;
+              font-size: 18px;
+              line-height: 22px;
+              letter-spacing: 0%;
+              vertical-align: middle;
+              resize: none;
+              &::placeholder {
+                color: #B1B5D0;
+              }
+            }
+          }
 
           input {
             width: 100%;
