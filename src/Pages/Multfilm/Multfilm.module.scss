@@ -20,3 +20,9 @@
   background-color: #8A60EB;
   border-top: 4px solid #9873ED;
 }
+
+@media screen and (max-width: 1024px) {
+  .footer p {
+    width: 70%;
+  }
+}

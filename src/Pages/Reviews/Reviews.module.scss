@@ -106,8 +106,278 @@
   padding: 32px;
   margin-bottom: 20px;
 
-  h3 {
-    margin: 0;
-    padding: 0;
+  .cardHeader {
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 11px;
+    .avatar {
+
+    }
+
+    .textPart {
+      width: 100%;
+
+      .name {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
+        .fio {
+          font-family: Ubuntu;
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          text-transform: uppercase;
+          color: #4C4C4C;
+        }
+        .org {
+          font-family: Ubuntu;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          color: #8A60EB;
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+
+  .content {
+    .text {
+      max-height: 110px;
+      overflow: hidden;
+      font-family: Ubuntu;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0%;
+      color: #4C4C4C;
+      transition: max-height 0.3s ease-in-out;
+    }
+    .text.expanded {
+      max-height: 1000px;
+      overflow: visible;
+    }
+    .images {
+      margin-top: 20px;
+    }
+    .singleImage {
+      width: 100%;
+      height: 450px;
+      border-radius: 12px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .multipleImages {
+      overflow-x: scroll;
+      display: flex;
+      gap: 8px; /* Отступы между изображениями */
+      scrollbar-width: thin; /* Для Firefox */
+      scrollbar-color: rgba(0, 0, 0, 0) transparent; /* Скрытый скролл */
+      transition: scrollbar-color 0.3s ease-in-out;
+      position: relative; /* Чтобы работал hover */
+      img {
+        width: 393px;
+        height: 250px;
+        border-radius: 12px;
+      }
+    }
+    .multipleImages:hover {
+      scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+    }
+
+    /* Стилизация скроллбара для WebKit (Chrome, Safari) */
+    .multipleImages::-webkit-scrollbar {
+      height: 6px; /* Высота скроллбара */
+      //background: transparent;
+    }
+
+    .multipleImages::-webkit-scrollbar-track {
+      background: transparent; /* Прозрачный трек */
+    }
+
+    .multipleImages::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0); /* Прозрачный по умолчанию */
+      border-radius: 6px;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .multipleImages:hover::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.3); /* Появляется при наведении */
+    }
+
+  }
+}
+
+.showMoreButton {
+  cursor: pointer;
+  padding-top: 12px;
+  font-family: Ubuntu;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-offset: 0%;
+  text-decoration-thickness: 0%;
+  text-decoration-skip-ink: auto;
+  color: #8A60EB;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.reviewForm {
+  width: 906px;
+  height: auto;
+  max-height: 90vh;
+  padding: 32px;
+  border-radius: 24px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  h1 {
+    font-family: Ubuntu;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: 0%;
+    color: #4C4C4C;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+
+      .input_wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+        label {
+          font-family: Ubuntu;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 22px;
+          letter-spacing: 0%;
+          vertical-align: middle;
+          color: #4C4C4C;
+          position: static !important;
+        }
+        .input_custom {
+          border-radius: 12px;
+          background-color: #F3F0FF;
+
+          input {
+            width: 100%;
+            height: 100%;
+            background-color: transparent !important;
+            outline: none;
+            border: none;
+            padding: 17px 20px;
+            font-family: Ubuntu;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 22px;
+            letter-spacing: 0%;
+            vertical-align: middle;
+            &::placeholder {
+              color: #B1B5D0;
+            }
+          }
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 12px;
+
+        .select {
+          display: flex;
+          flex-direction: column;
+          row-gap: 8px;
+          .label {
+            font-family: Ubuntu;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+            letter-spacing: 0%;
+            vertical-align: middle;
+            color: #4C4C4C;
+          }
+          .select_wrapper {
+            position: relative;
+            .value {
+              padding: 17px 20px;
+              border-radius: 12px;
+              background-color: #F3F0FF;
+              span {
+                font-family: Ubuntu;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 22px;
+                letter-spacing: 0%;
+                vertical-align: middle;
+                color: #4C4C4C;
+              }
+              &._active {
+                & + .select_values {
+                  opacity: 1;
+                  visibility: visible;
+                }
+              }
+            }
+            .select_values {
+              width: 100%;
+              opacity: 0;
+              position: absolute;
+              visibility: hidden;
+              border: 1px solid #9F91D6;
+              border-radius: 12px;
+              overflow-y: scroll;
+              top: 65px;
+              background-color: white;
+              max-height: 300px;
+              div {
+                padding: 17px 20px;
+                overflow: hidden;
+                background-color: white;
+                &._active {
+                  background-color: #F3F0FF;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
