@@ -161,10 +161,15 @@ const Reviews = () => {
         formData.append("fio", fio);
         formData.append("email", email);
         formData.append("text", reviewText);
-        formData.append("image", files);
+        files.forEach((file) => {
+            console.log(file.file)
+            formData.append("images[]", file.file); // Используем file.file, как ты указал
+        });
+
 
         try {
             const response = await axios.post(`${url}amina/add_feedback`, formData);
+            console.log('formdata', formData)
             console.log(response)
             if (response.data.message === 'Отзыв успешно добавлен') {
                 setShowForm(false)
@@ -330,7 +335,7 @@ const Reviews = () => {
                     <div className={styles.reviews}>
                         <div className={styles.reviews_header}>
                             <button className={`${styles.button} ${styles.button_pink}`} onClick={() => setShowForm(true)}>
-                                Оставить отзыв
+                                Фикер калдырырга
                             </button>
                             <div className={styles.sort}>
                                 <div
