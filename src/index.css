@@ -710,6 +710,21 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   background-color: white;
 }
 
+.scrollToTop {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20%;
+  right: 8%;
+  background-color: white;
+  z-index: 1000;
+}
+
 .mobileMenu {
   display: none;
   z-index: 1000;
@@ -1016,6 +1031,7 @@ body {
 }
 
 .pageWrapper {
+  position: relative;
   padding: 48px 0 0 0;
 }
 

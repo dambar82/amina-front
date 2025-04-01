@@ -130,9 +130,42 @@ const Songs = () => {
         }
     };
 
+    const [isScrolledHalf, setIsScrolledHalf] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const halfHeight = window.innerHeight / 2;
+            if (window.scrollY > halfHeight) {
+                setIsScrolledHalf(true);
+            } else {
+                setIsScrolledHalf(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     return (
         <>
             <div className={'pageWrapper'}>
+                {
+                    isScrolledHalf && (
+                        <div className={'scrollToTop'} onClick={scrollToTop}>
+                            <img src="./img/toTopBlack.svg" alt=""/>
+                        </div>
+                    )
+                }
                 <div className={'pageHeaderImage'}>
                     <img src={imgSrc} alt=""/>
                     <span>Җырлар</span>
