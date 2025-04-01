@@ -47,7 +47,8 @@ const Reviews = () => {
     const [job, setJob] = useState('');
     const [email, setEmail] = useState('');
     const fileInputRef = React.useRef(null);
-    const [files, setFiles] = useState([])
+    const [files, setFiles] = useState([]);
+    const [reviewText, setReviewText] = useState('');
 
     const handleAttachClick = () => {
         fileInputRef.current.click();
@@ -61,16 +62,6 @@ const Reviews = () => {
         }));
         setFiles(prevFiles => [...prevFiles, ...newFiles]);
     };
-
-    const [formData, setFormData] = useState({
-        institution: "Мәктәп",
-        city: "Казань",
-        name: "",
-        job: "",
-        email: "",
-        experience: "",
-        file: null,
-    });
 
     const updateImage = () => {
 
@@ -160,7 +151,27 @@ const Reviews = () => {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("creator", selectOrganizationValue.key);
+        formData.append("organization", organizationName);
+        formData.append("job_title", job);
+        formData.append("region", districtValue.title);
+        formData.append("fio", fio);
+        formData.append("email", email);
+        formData.append("text", reviewText);
+        formData.append("image", files);
+
+        try {
+            const response = await axios.post(`${url}amina/add_feedback`, formData);
+            console.log(response)
+            if (response.data.message === 'Отзыв успешно добавлен') {
+                setShowForm(false)
+            }
+        } catch (error) {
+            console.error("Ошибка при отправке:", error.response?.data || error.message);
+        }
     }
 
     return (
@@ -264,11 +275,18 @@ const Reviews = () => {
                                     <div className={styles.input_custom}>
                                         <div className={styles.textarea_wrapper}>
                                             <textarea
+                                                onChange={(e) => setReviewText(e.target.value)}
                                                type="text"
                                                placeholder='Бәяләмә тексты. Нәрсә ошады? Нәрсәне яхшыртырга мөмкин? Балаларның мультсериалга мөнәсәбәте?'
                                             />
                                             <div className={styles.textarea_wrapper_low}>
-                                                <button onClick={handleAttachClick}><img src="./img/attachPic.svg" alt=""/><span>Рәсем өстәргә</span></button>
+                                                <button
+                                                    onClick={handleAttachClick}
+                                                    type='button'
+                                                >
+                                                    <img src="./img/attachPic.svg" alt=""/>
+                                                    <span>Рәсем өстәргә</span>
+                                                </button>
                                                 <input
                                                     type="file"
                                                     accept="image/*"
@@ -292,10 +310,10 @@ const Reviews = () => {
                                 </div>
                             )}
                             <div className={styles.buttons}>
-                                <button className={`${styles.button} ${styles.button_pink}`}>
+                                <button className={`${styles.button} ${styles.button_pink}`} type='submit'>
                                     Фикер калдырырга
                                 </button>
-                                <button className={`${styles.button}`} onClick={() => setShowForm(false)}>
+                                <button className={`${styles.button}`} onClick={() => setShowForm(false)} type='button'>
                                     Фикер калдырырга
                                 </button>
                             </div>
@@ -340,7 +358,7 @@ const Reviews = () => {
                                 <div key={review.id} className={styles.reviews_card}>
                                     <div className={styles.cardHeader}>
                                         <div className={styles.avatar}>
-                                            <img src={review.creator === "частное лицо" ? './img/personPic.png' : review.creator === "школа" ? './img/schoolPic.png' : review.creator === "организация" && './img/sadikPic.png'} alt=""/>
+                                            <img src={review.creator === "частное лицо" ? './img/personPic.png' : review.creator === "школа" ? './img/schoolPic.png' : './img/sadikPic.png'} alt=""/>
                                         </div>
                                         <div className={styles.textPart}>
                                             <div className={styles.name}>
