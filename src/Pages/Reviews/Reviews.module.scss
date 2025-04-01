@@ -492,6 +492,23 @@
 }
 
 @media screen and (max-width: 600px) {
+
+  .reviews {
+    &_header {
+      flex-direction: column;
+      row-gap: 12px;
+      button {
+        margin: 0;
+        width: 90vw;
+      }
+      .sort {
+        &_value {
+          width: 90vw;
+        }
+      }
+    }
+  }
+
   .reviews_list {
     display: grid;
     grid-template-columns: 1fr;
