@@ -17,8 +17,11 @@ const Header = () => {
                 return styles.songsBackground; // Замените на ваш класс или стиль
             case '/reviews':
                 return styles.reviewsBackground; // Замените на ваш класс или стиль
+            case '/method':
+            case '/about':
+                return styles.aboutBackground;
             default:
-                return ''; // Замените на ваш класс или стиль по умолчанию
+                return styles.reviewsBackground; // Замените на ваш класс или стиль по умолчанию
         }
     };
 
@@ -26,6 +29,9 @@ const Header = () => {
         <header className={`header ${location.pathname === '/' ? 'headerMain' : ''}`}>
             {mobileMenuShow && (
                 <div className={`mobileMenu ${getBackgroundColor()}`}>
+                    <div className={'burger'} onClick={() => setMobileMenuShow(false)}>
+                        <img src="./img/closeMobileIcon.png" alt=""/>
+                    </div>
                     <div className="mobileMenu_menu" >
                         <ul>
                             <Link to='/multfilm'>
@@ -38,15 +44,22 @@ const Header = () => {
                                     Җырлар
                                 </li>
                             </Link>
-                            {/*<Link to='/reviews'>*/}
-                            {/*    <li className="mobileMenu_Element">*/}
-                            {/*        Отзывлар*/}
-                            {/*    </li>*/}
-                            {/*</Link>*/}
+                            <Link to='/songs_text'>
+                                <li className="mobileMenu_Element">
+                                    Җыр сүзләре
+                                </li>
+                            </Link>
+                            <Link to='/reviews'>
+                                <li className="mobileMenu_Element">
+                                    Бәяләмәләр
+                                </li>
+                            </Link>
+                            <Link to='/about'>
+                                <li className="mobileMenu_Element">
+                                    Проект турында
+                                </li>
+                            </Link>
                         </ul>
-                    </div>
-                    <div className={'burger'} onClick={() => setMobileMenuShow(false)}>
-                        <img src="./img/closeMobileIcon.png" alt=""/>
                     </div>
                 </div>
             )}
