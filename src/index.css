@@ -714,11 +714,13 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   display: none;
   z-index: 1000;
   top: 0;
+  left: 0;
   padding: 20px 34px;
   position: absolute;
   /*background-color: #FEAFFF;*/
   border-radius: 0 0 24px 24px;
   width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .mobileMenu_menu {
@@ -731,7 +733,13 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   width: 100%;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 15px;
+}
+
+.mobileMenu_menu ul li {
+  white-space: nowrap;
 }
 
 .header__block {
@@ -886,6 +894,7 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
     min-height: 44px;
     border-radius: 8px;
     cursor: pointer;
+    margin-left: auto;
   }
 }
 /*
@@ -928,6 +937,8 @@ sm 767 - Фаблеты	(500)
     /*justify-content: space-between;*/
     column-gap: 30px;
     display: flex;
+    flex-direction: column;
+    row-gap: 32px;
   }
 
   .header__menu {
