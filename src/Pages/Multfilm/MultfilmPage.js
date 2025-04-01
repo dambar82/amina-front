@@ -14,13 +14,17 @@ const MultfilmPage = () => {
     const [imgSrc, setImgSrc] = useState('./img/oblozhki/multfilmBig.png');
 
     const updateImage = () => {
-        // Проверяем ширину экрана и меняем изображение в зависимости от этого
+
         if (window.innerWidth < 600) {
-            setImgSrc('./img/MultfilmHeaderImageMobile.png'); // Изображение для маленьких экранов
+            setImgSrc('./img/oblozhki/multilmMobile.png');
+        } else if (window.innerWidth < 768) {
+            setImgSrc('./img/oblozhki/multfilm768.png');
         } else if (window.innerWidth < 1024) {
-            setImgSrc('./img/MultfilmHeaderImage1024.png'); // Изображение для средних экранов
+            setImgSrc('./img/oblozhki/multfilm1024.png');
+        } else if (window.innerWidth < 1440) {
+            setImgSrc('./img/oblozhki/multfilm1440.png');
         } else {
-            setImgSrc('./img/oblozhki/multfilmBig.png'); // Изображение для больших экранов
+            setImgSrc('./img/oblozhki/multfilmBig.png');
         }
     };
 

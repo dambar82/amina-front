@@ -21,9 +21,13 @@ const Songs = () => {
     const updateImage = () => {
 
         if (window.innerWidth < 600) {
-            setImgSrc('./img/SongsHeaderImageMobile.png');
+            setImgSrc('./img/oblozhki/songsMobile.png');
+        } else if (window.innerWidth < 768) {
+            setImgSrc('./img/oblozhki/songs768.png');
         } else if (window.innerWidth < 1024) {
-            setImgSrc('./img/SongsHeaderImage1024.png');
+            setImgSrc('./img/oblozhki/songs1024.png');
+        } else if (window.innerWidth < 1440) {
+            setImgSrc('./img/oblozhki/songs1440.png');
         } else {
             setImgSrc('./img/oblozhki/songsBig.png');
         }

@@ -66,13 +66,28 @@ const Reviews = () => {
     const updateImage = () => {
 
         if (window.innerWidth < 600) {
-            setImgSrc('./img/SongsHeaderImageMobile.png');
+            setImgSrc('./img/oblozhki/reviewsMobile.png');
+        } else if (window.innerWidth < 768) {
+            setImgSrc('./img/oblozhki/reviews768.png');
         } else if (window.innerWidth < 1024) {
-            setImgSrc('./img/SongsHeaderImage1024.png');
+            setImgSrc('./img/oblozhki/reviews1024.png');
+        } else if (window.innerWidth < 1440) {
+            setImgSrc('./img/oblozhki/reviews1440.png');
         } else {
-            setImgSrc('./img/SongsHeaderImage.png');
+            setImgSrc('./img/oblozhki/reviewsBig.png');
         }
     };
+
+    useEffect(() => {
+
+        updateImage();
+
+        window.addEventListener('resize', updateImage);
+
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, []);
 
     useEffect(() => {
         const fetchReviews = async () => {

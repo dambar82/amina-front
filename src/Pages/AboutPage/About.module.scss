@@ -51,3 +51,15 @@
   border-top: 4px solid #98A6FF;
   background-color: #8A9AFF;
 }
+
+@media screen and (max-width: 1024px) {
+  .aboutBlock {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aboutBlock {
+    width: 90%;
+  }
+}

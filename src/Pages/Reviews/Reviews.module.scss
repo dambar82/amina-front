@@ -461,3 +461,52 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .reviews_card {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sort {
+    &_value {
+      width: 250px;
+    }
+  }
+
+  .reviews_card {
+    .content {
+      .singleImage {
+        height: 260px;
+      }
+
+      .multipleImages {
+        img {
+          width: 300px;
+          max-width: 300px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .reviews_list {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .reviews_card {
+    width: 100%;
+    overflow: hidden;
+
+    .content {
+      overflow: hidden;
+      .images {
+        width: 100%;
+      }
+    }
+  }
+}
