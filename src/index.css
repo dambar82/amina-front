@@ -1104,6 +1104,15 @@ body {
 
 @media screen and (max-width: 1440px) {
 
+  .pageHeaderImage span {
+    font-family: Ubuntu;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 76px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+  }
+
   header {
     padding: 20px 3rem !important;
   }
@@ -1135,6 +1144,20 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
+
+  .pageWrapper {
+    padding: 48px 30px;
+  }
+
+  .pageHeaderImage span {
+    font-family: Ubuntu;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+  }
+
   .mulfilm_grid {
     display: grid;
     gap: 20px;
@@ -1142,7 +1165,36 @@ body {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .pageHeaderImage span {
+    font-family: Ubuntu;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    max-width: 364px;
+  }
+}
+
 @media screen and (max-width: 600px) {
+
+  .pageHeaderImage span {
+    font-family: Ubuntu;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    width: 300px;
+    top: 40px;
+  }
+
+  .pageWrapper {
+    padding: 24px 16px;
+  }
+
   .pageHeaderImage {
     width: 100%;
   }
