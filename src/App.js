@@ -24,7 +24,7 @@ function App() {
                 document.body.style.backgroundRepeat = 'no-repeat';
                 const mobileMenu = document.querySelector('.mobileMenu');
                 if (mobileMenu) {
-                    mobileMenu.style.backgroundColor = '#FEAFFF'; // Задайте нужный цвет
+                    mobileMenu.style.backgroundColor = '#FE89FF'; // Задайте нужный цвет
                 }
                 break;
             case '/multfilm':
