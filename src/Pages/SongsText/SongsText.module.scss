@@ -98,3 +98,16 @@ h1 {
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .song {
+    padding: 16px;
+    flex-direction: column;
+    row-gap: 12px;
+    &_nota {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+    }
+  }
+}
