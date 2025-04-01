@@ -71,46 +71,48 @@ const MultfilmPage = () => {
     }, [])
 
     return (
-        <div className={'pageWrapper'}>
-            <div className={'pageHeaderImage'}>
-                <img src={imgSrc} alt=""/>
-                <span>Мультфильмнар</span>
-            </div>
-            <div className={'pageContent'}>
-                <div className={'mulfilm_grid'}>
-                    {
-                        videos.map((item, index) => (
-                            <div className={'videoBlock'} key={index} onClick={() => handleThumbnailClick(item)}>
-                                <img src={item.preview} alt={item.name} className={'thumbnail'} />
-                                <div className={'thumbnail_title'}>
-                                    <p>{item.name}</p>
-                                    <video
-                                        style={{ display: 'none' }} // скрываем видео
-                                        onLoadedMetadata={(e) => handleLoadedMetadata(index, e.target.duration)}
-                                    >
-                                        <source src={item.video} type="video/mp4" />
-                                    </video>
-
-                                    {/* Display duration */}
-                                    {/*{videoDurations[index] && (*/}
-                                    {/*    <p className="duration">{videoDurations[index]}</p>*/}
-                                    {/*)}*/}
-                                </div>
-                            </div>
-                        ))
-                    }
+        <>
+            <div className={'pageWrapper'}>
+                <div className={'pageHeaderImage'}>
+                    <img src={imgSrc} alt=""/>
+                    <span>Мультфильмнар</span>
                 </div>
-                {selectedVideo && (
-                    <div className={'modal'} onClick={closeModal}>
-                        <div className={'modalContent'}>
-                            <span className={'close'} onClick={closeModal}>&times;</span>
-                            <video controls onClick={(event) => event.stopPropagation()}>
-                                <source src={selectedVideo.link} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
+                <div className={'pageContent'}>
+                    <div className={'mulfilm_grid'}>
+                        {
+                            videos.map((item, index) => (
+                                <div className={'videoBlock'} key={index} onClick={() => handleThumbnailClick(item)}>
+                                    <img src={item.preview} alt={item.name} className={'thumbnail'} />
+                                    <div className={'thumbnail_title'}>
+                                        <p>{item.name}</p>
+                                        <video
+                                            style={{ display: 'none' }} // скрываем видео
+                                            onLoadedMetadata={(e) => handleLoadedMetadata(index, e.target.duration)}
+                                        >
+                                            <source src={item.video} type="video/mp4" />
+                                        </video>
+
+                                        {/* Display duration */}
+                                        {/*{videoDurations[index] && (*/}
+                                        {/*    <p className="duration">{videoDurations[index]}</p>*/}
+                                        {/*)}*/}
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
-                )}
+                    {selectedVideo && (
+                        <div className={'modal'} onClick={closeModal}>
+                            <div className={'modalContent'}>
+                                <span className={'close'} onClick={closeModal}>&times;</span>
+                                <video controls onClick={(event) => event.stopPropagation()}>
+                                    <source src={selectedVideo.link} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
             <div className={`${styles.footer} ${styles.footer_multfilm}`}>
                 <p>
@@ -120,7 +122,7 @@ const MultfilmPage = () => {
                     © 2024 «Әминә». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
                 </p>
             </div>
-        </div>
+        </>
     );
 };
 
