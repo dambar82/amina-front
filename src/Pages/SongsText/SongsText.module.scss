@@ -90,3 +90,11 @@ h1 {
   background-color: #00BCF5;
   border-top: 4px solid #FFFFFF1F
 }
+
+@media screen and (max-width: 768px) {
+  .song {
+    &_pic {
+      display: none;
+    }
+  }
+}

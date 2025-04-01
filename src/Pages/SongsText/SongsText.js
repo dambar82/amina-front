@@ -13,13 +13,30 @@ const SongsText = () => {
     const updateImage = () => {
 
         if (window.innerWidth < 600) {
-            setImgSrc('./img/SongsHeaderImageMobile.png');
+            setImgSrc('./img/oblozhki/songsTextMobile.png');
+        } else if (window.innerWidth < 768) {
+            setImgSrc('./img/oblozhki/songsText768.png');
         } else if (window.innerWidth < 1024) {
-            setImgSrc('./img/SongsHeaderImage1024.png');
+            setImgSrc('./img/oblozhki/songsText1024.png');
+        } else if (window.innerWidth < 1440) {
+            setImgSrc('./img/oblozhki/songsText1440.png');
         } else {
-            setImgSrc('./img/SongsHeaderImage.png');
+            setImgSrc('./img/oblozhki/songsTextBig.png');
         }
     };
+
+    useEffect(() => {
+        // Устанавливаем изначальное изображение при загрузке
+        updateImage();
+
+        // Добавляем обработчик события изменения размера окна
+        window.addEventListener('resize', updateImage);
+
+        // Удаляем обработчик при размонтировании компонента
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, []);
 
     useEffect(() => {
         const getSongs = async () => {
@@ -39,39 +56,41 @@ const SongsText = () => {
     };
 
     return (
-        <div className={'pageWrapper'}>
-            <div className={'pageHeaderImage'}>
-                <img src={imgSrc} alt=""/>
-                <span>Җыр сүзләре</span>
-            </div>
-            <div className={'pageContent'}>
-                <div className={styles.songsText}>
-                    {
-                        songs.map((song, index) => (
-                            <div className={styles.song} key={song.id}>
-                                <div
-                                    className={styles.song_nota}
-                                    style={{ backgroundColor: colors[index % colors.length] }}
-                                >
-                                    <img src="/img/whiteNota.svg" alt=""/>
-                                </div>
-                                <div className={styles.song_content}>
-                                    <h1>{song.title}</h1>
-                                    <div className={`${styles.text} ${expandedSongs[song.id] ? styles.expanded : ""}`}
-                                         dangerouslySetInnerHTML={{__html: song.content}}
-                                    ></div>
-                                    <div className={styles.showMoreButton}
-                                         onClick={() => toggleExpand(song.id)}
+        <>
+            <div className={'pageWrapper'}>
+                <div className={'pageHeaderImage'}>
+                    <img src={imgSrc} alt=""/>
+                    <span>Җыр сүзләре</span>
+                </div>
+                <div className={'pageContent'}>
+                    <div className={styles.songsText}>
+                        {
+                            songs.map((song, index) => (
+                                <div className={styles.song} key={song.id}>
+                                    <div
+                                        className={styles.song_nota}
+                                        style={{ backgroundColor: colors[index % colors.length] }}
                                     >
-                                        {expandedSongs[song.id] ? "Төреп куярга" : "Тулысынча күрсәтергә"}
+                                        <img src="/img/whiteNota.svg" alt=""/>
+                                    </div>
+                                    <div className={styles.song_content}>
+                                        <h1>{song.title}</h1>
+                                        <div className={`${styles.text} ${expandedSongs[song.id] ? styles.expanded : ""}`}
+                                             dangerouslySetInnerHTML={{__html: song.content}}
+                                        ></div>
+                                        <div className={styles.showMoreButton}
+                                             onClick={() => toggleExpand(song.id)}
+                                        >
+                                            {expandedSongs[song.id] ? "Төреп куярга" : "Тулысынча күрсәтергә"}
+                                        </div>
+                                    </div>
+                                    <div className={styles.song_pic}>
+                                        <img src={song.image} alt=""/>
                                     </div>
                                 </div>
-                                <div className={styles.song_pic}>
-                                    <img src={song.image} alt=""/>
-                                </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
             <div className={`${multfilmStyles.footer} ${styles.footer_songText}`}>
@@ -82,7 +101,7 @@ const SongsText = () => {
                     © 2024 «Әминә». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
                 </p>
             </div>
-        </div>
+        </>
     );
 };
 

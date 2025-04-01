@@ -131,73 +131,75 @@ const Songs = () => {
     };
 
     return (
-        <div className={'pageWrapper'}>
-            <div className={'pageHeaderImage'}>
-                <img src={imgSrc} alt=""/>
-                <span>Җырлар</span>
-            </div>
-            <div className={'pageContent'}>
-                <div className={'songsContent'}>
-                    {songs.map((song, index) => (
-                        <div key={song.id} className={`songItem ${currentSong === song ? 'songItem_current' : ''}`} onClick={() => playSong(song)}>
-                            <span className="songNumber">{(index + 1).toString().padStart(2, '0')}</span>
-                            <div>
-                                <img src={pics[index % pics.length]} alt=""/>
-                            </div>
-                            <span className="songTitle">{song.title}</span>
-                            <span className="songDuration">{durations[song.id] || '00:00'}</span>
-                        </div>
-                    ))}
+        <>
+            <div className={'pageWrapper'}>
+                <div className={'pageHeaderImage'}>
+                    <img src={imgSrc} alt=""/>
+                    <span>Җырлар</span>
                 </div>
-            </div>
-            {currentSong && (
-                <div className="audioPlayer">
-                    <audio
-                        ref={audioRef}
-                        src={currentSong.audio}
-                        autoPlay={isPlaying}
-                        onTimeUpdate={handleTimeUpdate}
-                        onEnded={() => setIsPlaying(false)} // Возвращаем состояние в паузу, если песня закончилась
-                        controls={false} // Отключаем стандартные контролы
-                    />
+                <div className={'pageContent'}>
+                    <div className={'songsContent'}>
+                        {songs.map((song, index) => (
+                            <div key={song.id} className={`songItem ${currentSong === song ? 'songItem_current' : ''}`} onClick={() => playSong(song)}>
+                                <span className="songNumber">{(index + 1).toString().padStart(2, '0')}</span>
+                                <div>
+                                    <img src={pics[index % pics.length]} alt=""/>
+                                </div>
+                                <span className="songTitle">{song.title}</span>
+                                <span className="songDuration">{durations[song.id] || '00:00'}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                {currentSong && (
+                    <div className="audioPlayer">
+                        <audio
+                            ref={audioRef}
+                            src={currentSong.audio}
+                            autoPlay={isPlaying}
+                            onTimeUpdate={handleTimeUpdate}
+                            onEnded={() => setIsPlaying(false)} // Возвращаем состояние в паузу, если песня закончилась
+                            controls={false} // Отключаем стандартные контролы
+                        />
 
-                    {/* Прогресс-бар */}
-                    <div className="progressBarContainer">
-                        <div className="controls">
-                            <img src="./img/previousSong.png" alt="" onClick={playPreviousSong}/>
-                            {
-                                isPlaying ? (<img src="./img/playerStop.svg" alt="" onClick={togglePlayPause}/>) : (
-                                    <img src="./img/playerPlay.svg" alt="" onClick={togglePlayPause}/>)
-                            }
-                            <img src="./img/nextSong.svg" alt="" onClick={playNextSong}/>
-                        </div>
-                        <div className="timeDisplay">
-                            <span>{formatDuration(currentTime)}</span>/
-                            <span>{durations[currentSong.id]}</span>
-                        </div>
-                        <input
+                        {/* Прогресс-бар */}
+                        <div className="progressBarContainer">
+                            <div className="controls">
+                                <img src="./img/previousSong.png" alt="" onClick={playPreviousSong}/>
+                                {
+                                    isPlaying ? (<img src="./img/playerStop.svg" alt="" onClick={togglePlayPause}/>) : (
+                                        <img src="./img/playerPlay.svg" alt="" onClick={togglePlayPause}/>)
+                                }
+                                <img src="./img/nextSong.svg" alt="" onClick={playNextSong}/>
+                            </div>
+                            <div className="timeDisplay">
+                                <span>{formatDuration(currentTime)}</span>/
+                                <span>{durations[currentSong.id]}</span>
+                            </div>
+                            <input
                                 onClick={handleProgressClick}
                                 type="range"
                                 className="progressBar"
                                 value={(currentTime / (audioRef.current?.duration || 1)) * 100}
                                 onChange={handleSeek}
                                 style={{ '--value': (currentTime / (audioRef.current?.duration || 1)) * 100 }}
-                        />
-                        <div className='volume'>
-                            <img src="./img/volumeImage.svg" alt=""/>
-                            <input
-                                type="range"
-                                className="volumeControl"
-                                min="0"
-                                max="1"
-                                step="0.01"
-                                value={volume}
-                                onChange={handleVolumeChange}
                             />
+                            <div className='volume'>
+                                <img src="./img/volumeImage.svg" alt=""/>
+                                <input
+                                    type="range"
+                                    className="volumeControl"
+                                    min="0"
+                                    max="1"
+                                    step="0.01"
+                                    value={volume}
+                                    onChange={handleVolumeChange}
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
             <div className={`${styles.footer} ${styles.footer_multfilm}`}>
                 <p>
                     Проект Казан мэриясе ярдәме белән «Татармультфильм» студиясе тарафыннан гамәлгә ашырылды.  Проект балалар өчен белем бирү, татар телен популярлаштыру юнәлешендәге мәдәни контентны  үстерүгә йөз тота.
@@ -206,7 +208,7 @@ const Songs = () => {
                     © 2024 «Әминә». Барлык хокуклар якланган. Сайт материалларын язма рөхсәт белән генә файдаланырга ярый.
                 </p>
             </div>
-        </div>
+        </>
     );
 };
 
