@@ -719,8 +719,8 @@ html.magnifying > body{overflow-x:hidden!important}.magnify,.magnify > .magnify-
   align-items: center;
   cursor: pointer;
   position: fixed;
-  bottom: 20%;
-  right: 8%;
+  bottom: 3%;
+  right: 3%;
   background-color: white;
   z-index: 1000;
 }
