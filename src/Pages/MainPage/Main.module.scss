@@ -178,10 +178,37 @@
   }
 }
 
-@media screen and (max-height: 850px) and (max-width: 1024px) {
+@media screen and (max-height: 850px) and (max-width: 1200px) {
   .blockPurple_content {
     .textBlock {
       max-height: 250px;
+    }
+    .image {
+      width: 400px;
+      height: auto;
+    }
+  }
+
+  .songBLock {
+    padding: 30px;
+    height: 250px;
+  }
+}
+
+@media screen and (max-height: 601px) and (max-width: 1025px) {
+  .songBLock {
+    height: 200px;
+    &_content {
+      h1 {
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
+  }
+
+  .blockPurple_content {
+    .textBlock {
+      display: none;
     }
   }
 }

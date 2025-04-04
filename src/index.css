@@ -2261,3 +2261,12 @@ p {
   }
 
 }
+
+@media screen and (max-height: 601px) and (max-width: 1025px) {
+  .blockHigh {
+    row-gap: 2vh;
+  }
+  .mainContent_blockPurple {
+    row-gap: 17vh;
+  }
+}
