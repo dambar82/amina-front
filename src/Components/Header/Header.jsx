@@ -49,11 +49,11 @@ const Header = () => {
                                     Җыр сүзләре
                                 </li>
                             </Link>
-                            <Link to='/reviews'>
-                                <li className="mobileMenu_Element">
-                                    Бәяләмәләр
-                                </li>
-                            </Link>
+                            {/*<Link to='/reviews'>*/}
+                            {/*    <li className="mobileMenu_Element">*/}
+                            {/*        Бәяләмәләр*/}
+                            {/*    </li>*/}
+                            {/*</Link>*/}
                             <Link to='/about'>
                                 <li className="mobileMenu_Element">
                                     Проект турында
@@ -132,11 +132,11 @@ const Header = () => {
                                 </>
                             ) : (
                                 <>
-                                    <Link to='/reviews'>
-                                        <li className={`menuElement ${location.pathname === '/reviews' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>
-                                            Бәяләмәләр
-                                        </li>
-                                    </Link>
+                                    {/*<Link to='/reviews'>*/}
+                                    {/*    <li className={`menuElement ${location.pathname === '/reviews' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>*/}
+                                    {/*        Бәяләмәләр*/}
+                                    {/*    </li>*/}
+                                    {/*</Link>*/}
                                     <Link to='/about'>
                                         <li className={`menuElement ${location.pathname === '/about' ? `${styles.active} ${styles.active_about}` : ''}`}>
                                             Проект турында
