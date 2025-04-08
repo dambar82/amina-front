@@ -76,15 +76,15 @@ const News = () => {
                                     {formatDate(newsItem.date)}
                                 </div>
                                 <div className={'newsItem_info'}>
-                                    {newsItem.images[0] &&
+                                    {newsItem.content[0].image &&
                                         <div className={'newsItem_image'}>
-                                            <img src={newsItem.images[0]} alt=""/>
+                                            <img src={newsItem.content[0].image} alt=""/>
                                         </div>
                                     }
                                     <div className={'newsItem_text'}>
                                         <h2>{newsItem.title}</h2>
                                         <p
-                                            dangerouslySetInnerHTML={{__html: newsItem.content}}
+                                            dangerouslySetInnerHTML={{__html: newsItem.content[0].text}}
                                             style={{
                                                 padding: '10px 0',
                                                 maxHeight: expandedNews[index] ? '1000px' : '120px',

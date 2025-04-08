@@ -12,6 +12,10 @@ const SongsText = () => {
     const [isScrolledHalf, setIsScrolledHalf] = useState(false);
 
     useEffect(() => {
+        document.title = 'Җыр сүзләре';
+    }, []);
+
+    useEffect(() => {
         const handleScroll = () => {
             const halfHeight = window.innerHeight / 2;
             if (window.scrollY > halfHeight) {

@@ -10,6 +10,10 @@ const colors = ['#94EBFF', '#FF7DB9', '#B9FF43'];
 
 const Main = () => {
 
+    useEffect(() => {
+        document.title = 'Әминә белән бергә җырла!';
+    }, []);
+
     function formatDate(inputDate) {
 
         const parts = inputDate.split('-');

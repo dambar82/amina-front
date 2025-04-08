@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './About.module.scss';
 import {useLocation} from "react-router-dom";
 import multfilmStyles from "../Multfilm/Multfilm.module.scss";
 
 const About = () => {
     const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === '/about') {
+            document.title = 'Проект турында';
+        } else {
+            document.title = 'Проектның методикасы'
+        }
+    }, [location.pathname]);
 
     return (
         <div style={{minHeight: '100vh'}}>
