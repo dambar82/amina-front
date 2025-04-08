@@ -13,6 +13,10 @@ const MultfilmPage = () => {
 
     const [imgSrc, setImgSrc] = useState('./img/oblozhki/multfilmBig.png');
 
+    useEffect(() => {
+        document.title = 'Мультфильмнар';
+    }, []);
+
     const updateImage = () => {
 
         if (window.innerWidth < 600) {

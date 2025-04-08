@@ -18,6 +18,10 @@ const Songs = () => {
 
     const [imgSrc, setImgSrc] = useState('./img/oblozhki/songsBig.png');
 
+    useEffect(() => {
+        document.title = 'Җырлар';
+    }, []);
+
     const updateImage = () => {
 
         if (window.innerWidth < 600) {
