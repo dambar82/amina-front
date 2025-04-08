@@ -9,6 +9,10 @@ const News = () => {
 
     const [imgSrc, setImgSrc] = useState('./img/NewsHeaderImage.png');
 
+    useEffect(() => {
+        document.title = 'Яңалыклар';
+    }, []);
+
     const updateImage = () => {
 
         if (window.innerWidth < 600) {
