@@ -26,3 +26,67 @@
     width: 70%;
   }
 }
+
+.songsMinusesContent {
+  margin: 0 auto;
+  max-width: 1260px;
+  width: 100%;
+  padding-top: 58px;
+  padding-bottom: 58px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.minusItem {
+  border-radius: 24px;
+  background-color: white;
+  padding: 12px 12px 20px 12px;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  position: relative;
+
+  .downloadMinus {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+  }
+
+  .round {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-family: Ubuntu;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 24px;
+    leading-trim: NONE;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #4C4C4C;
+  }
+}
+
+.minusItem:hover {
+  transform: scale(1.03);
+}
+
+@media screen and (max-width: 1530px) {
+  .songsMinusesContent {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 1024px;
+  }
+}
