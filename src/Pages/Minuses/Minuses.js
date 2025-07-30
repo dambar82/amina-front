@@ -50,13 +50,26 @@ const Minuses = () => {
         setIsPlaying(!isPlaying);
     };
 
-    const handleDownload = (url, title) => {
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', title || 'file');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    const handleDownload = async (url, filename = 'file.mp3') => {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            const blob = await response.blob();
+            const blobUrl = window.URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+
+            // cleanup
+            link.remove();
+            window.URL.revokeObjectURL(blobUrl);
+        } catch (error) {
+            console.error('Download failed:', error);
+        }
     };
 
     return (
