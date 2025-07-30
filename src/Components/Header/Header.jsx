@@ -49,6 +49,11 @@ const Header = () => {
                                     Җыр сүзләре
                                 </li>
                             </Link>
+                            <Link to='/songs_minuses'>
+                                <li className="mobileMenu_Element">
+                                    Минуслар
+                                </li>
+                            </Link>
                             {/*<Link to='/reviews'>*/}
                             {/*    <li className="mobileMenu_Element">*/}
                             {/*        Бәяләмәләр*/}
@@ -107,6 +112,17 @@ const Header = () => {
                                                 <div className="appElement_box">
                                                     <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
                                                     <div className="appElement__txt">Җыр сүзләре </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                    <Link to='/songs_minuses'>
+                                        <li className={`menuElement ${location.pathname === '/songs_minuses' ? `${styles.active} ${styles.active_about}` : ''}`}>
+                                            Минуслар
+                                            <div className="appElement">
+                                                <div className="appElement_box">
+                                                    <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
+                                                    <div className="appElement__txt">Минуслар</div>
                                                 </div>
                                             </div>
                                         </li>
