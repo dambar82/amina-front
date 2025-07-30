@@ -9,21 +9,33 @@ const Minuses = () => {
     const roundAppearances = [
         {
             roundColor: '#FEB6DB',
-            notePic: './img/minuses/pinkNote.svg'
+            progressColor: '#FF4FA9',
+            notePic: './img/minuses/pinkNote.svg',
+            stop: './img/minuses/pinkStop.svg',
+            play: './img/minuses/pinkPlay.svg'
         },
         {
             roundColor: '#CFA0FF',
-            notePic: './img/minuses/purpleNote.svg'
+            progressColor: '#AB59FF',
+            notePic: './img/minuses/purpleNote.svg',
+            stop: './img/minuses/pinkStop.svg',
+            play: './img/minuses/pinkPlay.svg'
         },
         {
             roundColor: '#C7FF69',
-            notePic: './img/minuses/greenNote.svg'
+            progressColor: '#7DC800',
+            notePic: './img/minuses/greenNote.svg',
+            stop: './img/minuses/pinkStop.svg',
+            play: './img/minuses/pinkPlay.svg'
         }
     ]
 
     const [minuses, setMinuses] = useState([]);
     const [currentSong, setCurrentSong] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    // Добавляем состояния для отслеживания времени и прогресса
+    const [currentTime, setCurrentTime] = useState(0);
+    const [progress, setProgress] = useState(0);
     const audioRef = useRef(null);
 
     useEffect(() => {
@@ -35,12 +47,62 @@ const Minuses = () => {
         getMinuses();
     }, [])
 
+    // Обработчик для обновления времени и прогресса воспроизведения
+    useEffect(() => {
+        if (audioRef.current) {
+            const audio = audioRef.current;
+            
+            // Обновляем время каждые 100мс для плавного прогресс-бара
+            const updateTime = () => {
+                const current = audio.currentTime;
+                setCurrentTime(current);
+                // Рассчитываем прогресс от 0 до 100% за 15 секунд
+                setProgress((current / 15) * 100);
+                
+                // Останавливаем воспроизведение через 15 секунд
+                if (current >= 15) {
+                    audio.pause();
+                    setIsPlaying(false);
+                    setCurrentTime(0);
+                    setProgress(0);
+                    setCurrentSong(null);
+                }
+            };
+
+            // Сбрасываем прогресс когда песня заканчивается
+            const handleEnded = () => {
+                setIsPlaying(false);
+                setCurrentTime(0);
+                setProgress(0);
+                setCurrentSong(null);
+            };
+
+            audio.addEventListener('timeupdate', updateTime);
+            audio.addEventListener('ended', handleEnded);
+
+            return () => {
+                audio.removeEventListener('timeupdate', updateTime);
+                audio.removeEventListener('ended', handleEnded);
+            };
+        }
+    }, [currentSong]);
+
+    // Функция для запуска воспроизведения песни
     const playSong = (song) => {
+        // Если уже играет та же песня, просто toggle play/pause
+        if (currentSong && currentSong.id === song.id) {
+            togglePlayPause();
+            return;
+        }
+        
+        // Запускаем новую песню
         setCurrentSong(song);
+        setCurrentTime(0);
+        setProgress(0);
         setIsPlaying(true);
-       // setCurrentTime(0);  // Сброс текущего времени при смене песни
     };
 
+    // Переключение воспроизведения/паузы
     const togglePlayPause = () => {
         if (isPlaying) {
             audioRef.current.pause();
@@ -81,24 +143,86 @@ const Minuses = () => {
                 </div>
                 <div className={styles.songsMinusesContent}>
                     {
-                        minuses.map((item, index) => (
-                            <div className={styles.minusItem} key={item.id}>
-                                <div
-                                    className={styles.downloadMinus}
-                                    onClick={() => handleDownload(item.file, item.title + '.mp3')}
-                                >
-                                    <img src="/img/minuses/downloadMinus.svg" alt="Скачать минус" />
+                        minuses.map((item, index) => {
+                            // Определяем является ли этот элемент активным (проигрывается)
+                            const isCurrentSong = currentSong && currentSong.id === item.id;
+                            const appearance = roundAppearances[index % roundAppearances.length];
+                            
+                            return (
+                                <div className={styles.minusItem} key={item.id}>
+                                    <div
+                                        className={styles.downloadMinus}
+                                        onClick={() => handleDownload(item.file, item.title + '.mp3')}
+                                    >
+                                        <img src="/img/minuses/downloadMinus.svg" alt="Скачать минус" />
+                                    </div>
+                                    
+                                    {/* Кружок с прогресс-баром и кнопкой play/pause */}
+                                    <div 
+                                        className={styles.roundContainer}
+                                        onClick={() => playSong(item)}
+                                    >
+                                        {/* SVG прогресс-бар вокруг кружка */}
+                                        <svg className={styles.progressRing} viewBox="0 0 120 120">
+                                            {/* Фоновый круг */}
+                                            <circle
+                                                cx="60"
+                                                cy="60"
+                                                r="55"
+                                                fill="none"
+                                                stroke={appearance.roundColor}
+                                                strokeWidth="4"
+                                            />
+                                            {/* Прогресс круг */}
+                                            {isCurrentSong && (
+                                                <circle
+                                                    cx="60"
+                                                    cy="60"
+                                                    r="55"
+                                                    fill="none"
+                                                    stroke={appearance.progressColor}
+                                                    strokeWidth="4"
+                                                    strokeLinecap="round"
+                                                    strokeDasharray={`${2 * Math.PI * 55}`}
+                                                    strokeDashoffset={`${2 * Math.PI * 55 * (1 - progress / 100)}`}
+                                                    transform="rotate(-90 60 60)"
+                                                />
+                                            )}
+                                        </svg>
+                                        
+                                        {/* Основной кружок */}
+                                        <div 
+                                            className={styles.round} 
+                                            style={{ backgroundColor: appearance.roundColor }}
+                                        >
+                                            {/* Показываем иконку play/pause если песня активна, иначе ноту */}
+                                            {isCurrentSong ? (
+                                                <div className={styles.playPauseButton}>
+                                                    <img src={isPlaying ? appearance.stop : appearance.play} alt=""/>
+                                                </div>
+                                            ) : (
+                                                <img className={styles.image} src={appearance.notePic} alt=""/>
+                                            )}
+                                        </div>
+                                    </div>
+                                    
+                                    <div className={styles.title}>
+                                        {item.title}
+                                    </div>
                                 </div>
-                                <div className={styles.round} style={{ backgroundColor: roundAppearances[index % roundAppearances.length].roundColor }}>
-                                    <img className={styles.image} src={roundAppearances[index % roundAppearances.length].notePic} alt=""/>
-                                </div>
-                                <div className={styles.title}>
-                                    {item.title}
-                                </div>
-                            </div>
-                        ))
+                            );
+                        })
                     }
                 </div>
+                
+                {/* Скрытый audio элемент для воспроизведения */}
+                {currentSong && (
+                    <audio
+                        ref={audioRef}
+                        src={currentSong.file}
+                        autoPlay={isPlaying}
+                    />
+                )}
             </div>
         </>
     );
