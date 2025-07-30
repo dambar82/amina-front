@@ -18,7 +18,7 @@ function App() {
         // Логика изменения цвета фона в зависимости от маршрута
         switch (location.pathname) {
             case '/':
-                document.body.style.backgroundImage = `url('./img/MainBackground.jpg')`;
+                document.body.style.backgroundImage = `url('./img/MainBackground1.jpg')`;
                 document.body.style.backgroundSize = 'cover';
                 document.body.style.backgroundPosition = 'center';
                 document.body.style.backgroundRepeat = 'no-repeat';
