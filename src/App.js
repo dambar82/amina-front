@@ -9,6 +9,7 @@ import Songs from "./Pages/Songs/Songs";
 import Reviews from "./Pages/Reviews/Reviews";
 import About from "./Pages/AboutPage/About";
 import SongsText from "./Pages/SongsText/SongsText";
+import Minuses from "./Pages/Minuses/Minuses";
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
                 }
                 break;
             case '/songs':
+            case '/songs_minuses':
                 document.body.style.background = 'linear-gradient(280deg, #CDBEFF -1.76%, #B8A3FF 100%)';
                 const mobileMenuSongs = document.querySelector('.mobileMenu');
                 if (mobileMenuSongs) {
@@ -91,6 +93,7 @@ function App() {
             <Route path='/about' element={<About/>}></Route>
             <Route path='/method' element={<About/>}></Route>
             <Route path='/songs' element={<Songs/>}/>
+            <Route path='/songs_minuses' element={<Minuses/>}/>
             <Route path='/songs_text' element={<SongsText/>}></Route>
         </Route>
       </Routes>
