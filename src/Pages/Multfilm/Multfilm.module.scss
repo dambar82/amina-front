@@ -140,3 +140,24 @@
     max-width: 1024px;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .songsMinusesContent {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 800px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .songsMinusesContent {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .songsMinusesContent {
+    grid-template-columns: 1fr;
+
+  }
+}
