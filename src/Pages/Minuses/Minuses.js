@@ -26,6 +26,33 @@ const Minuses = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
 
+    const updateImage = () => {
+
+        if (window.innerWidth < 600) {
+            setImgSrc('./img/oblozhki/songsMobile.png');
+        } else if (window.innerWidth < 768) {
+            setImgSrc('./img/oblozhki/songs768.png');
+        } else if (window.innerWidth < 1024) {
+            setImgSrc('./img/oblozhki/songs1024.png');
+        } else if (window.innerWidth < 1440) {
+            setImgSrc('./img/oblozhki/songs1440.png');
+        } else {
+            setImgSrc('./img/oblozhki/songsBig.png');
+        }
+    };
+
+    useEffect(() => {
+
+        updateImage();
+
+        window.addEventListener('resize', updateImage);
+
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, []);
+
+
     useEffect(() => {
         const getMinuses = async () => {
             const response = await axios.get(`${url}amina/audio_minuses`);
