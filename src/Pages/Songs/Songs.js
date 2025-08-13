@@ -16,7 +16,7 @@ const Songs = () => {
     const audioRef = useRef(null);
     
     // Используем кастомный хук для скачивания файлов
-    const { downloadFile, isDownloading } = useDownload();
+    const { downloadFile } = useDownload();
 
     const pics = ['./img/songPink.png', './img/songPurple.png', './img/songGreen.png']
 
@@ -267,7 +267,6 @@ const Songs = () => {
                                     src="/img/downloadButton.svg" 
                                     alt="Скачать"
                                     onClick={() => downloadFile(currentSong.audio, currentSong.title + '.mp3')}
-                                    style={{ cursor: isDownloading ? 'wait' : 'pointer' }}
                                 />
                             </div>
                         </div>

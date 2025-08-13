@@ -5,9 +5,6 @@ import { useState } from 'react';
  * @returns {Object} объект с функцией downloadFile и состоянием isDownloading
  */
 const useDownload = () => {
-    // Состояние для отслеживания процесса скачивания
-    const [isDownloading, setIsDownloading] = useState(false);
-
     /**
      * Функция для скачивания файла по URL
      * @param {string} url - URL файла для скачивания
@@ -15,8 +12,6 @@ const useDownload = () => {
      */
     const downloadFile = async (url, filename = 'file.mp3') => {
         try {
-            // Устанавливаем состояние загрузки
-            setIsDownloading(true);
             
             // Получаем файл с сервера
             const response = await fetch(url);
@@ -43,14 +38,11 @@ const useDownload = () => {
             console.error('Download failed:', error);
             // Можно добавить обработку ошибок, например показ уведомления пользователю
         } finally {
-            // Сбрасываем состояние загрузки независимо от результата
-            setIsDownloading(false);
         }
     };
 
     return {
-        downloadFile,
-        isDownloading
+        downloadFile
     };
 };
 
