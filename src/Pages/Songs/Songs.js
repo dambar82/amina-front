@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
 import styles from "../Multfilm/Multfilm.module.scss";
+import useDownload from "../../hooks/useDownload";
 
 const Songs = () => {
 
@@ -13,6 +14,9 @@ const Songs = () => {
     const [currentTime, setCurrentTime] = useState(0);
     const [volume, setVolume] = useState(1);
     const audioRef = useRef(null);
+    
+    // Используем кастомный хук для скачивания файлов
+    const { downloadFile, isDownloading } = useDownload();
 
     const pics = ['./img/songPink.png', './img/songPurple.png', './img/songGreen.png']
 
@@ -53,15 +57,8 @@ const Songs = () => {
             const response = await axios.get(`${url}amina/audio`);
             const fetchedSongs = response.data.data;
             setSongs(fetchedSongs);
-            fetchedSongs.forEach(song => {
-                const audio = new Audio(song.audio);
-                audio.addEventListener('loadedmetadata', () => {
-                    setDurations(prev => ({
-                        ...prev,
-                        [song.id]: formatDuration(audio.duration)
-                    }));
-                });
-            })
+            // Убираем создание множественных Audio объектов
+            // Длительность будет получена при воспроизведении в handleTimeUpdate
         }
         getSongs();
     }, [])
@@ -73,12 +70,19 @@ const Songs = () => {
     };
 
     const playSong = (song) => {
+        // Если уже играет та же песня, просто toggle play/pause
+        if (currentSong && currentSong.id === song.id) {
+            togglePlayPause();
+            return;
+        }
+        
+        // Запускаем новую песню
         setCurrentSong(song);
         setIsPlaying(true);
         setCurrentTime(0);  // Сброс текущего времени при смене песни
     };
 
-    const togglePlayPause = () => {
+    const togglePlayPause = () => {        
         if (isPlaying) {
             audioRef.current.pause();
         } else {
@@ -88,10 +92,23 @@ const Songs = () => {
     };
 
     const handleTimeUpdate = () => {
-        setCurrentTime(audioRef.current.currentTime);
+        if (audioRef.current) {
+            setCurrentTime(audioRef.current.currentTime);
+            // Обновляем длительность если её еще нет
+            if (currentSong && !durations[currentSong.id] && audioRef.current.duration) {
+                setDurations(prev => ({
+                    ...prev,
+                    [currentSong.id]: formatDuration(audioRef.current.duration)
+                }));
+            }
+        }
     };
-
+    
     const handleSeek = (e) => {
+        // Упрощенная проверка готовности аудио
+        if (!audioRef.current || !audioRef.current.duration) {
+            return;
+        }
         const seekTime = (e.target.value / 100) * audioRef.current.duration;
         audioRef.current.currentTime = seekTime;
         setCurrentTime(seekTime);
@@ -104,6 +121,11 @@ const Songs = () => {
     };
 
     const handleProgressClick = (e) => {
+        // Упрощенная проверка готовности аудио
+        if (!audioRef.current || !audioRef.current.duration || isNaN(audioRef.current.duration)) {
+            return;
+        }
+        
         const progressBar = e.currentTarget;
         const rect = progressBar.getBoundingClientRect();  // Получаем координаты прогресс-бара
         const clickX = e.clientX - rect.left;  // Определяем точную горизонтальную позицию клика
@@ -204,8 +226,15 @@ const Songs = () => {
                             <div className="controls">
                                 <img src="./img/previousSong.png" alt="" onClick={playPreviousSong}/>
                                 {
-                                    isPlaying ? (<img src="./img/playerStop.svg" alt="" onClick={togglePlayPause}/>) : (
-                                        <img src="./img/playerPlay.svg" alt="" onClick={togglePlayPause}/>)
+                                    isPlaying ? (
+                                        <img src="./img/playerStop.svg" alt="" onClick={togglePlayPause}/>
+                                    ) : (
+                                        <img 
+                                            src="./img/playerPlay.svg" 
+                                            alt="" 
+                                            onClick={togglePlayPause}
+                                        />
+                                    )
                                 }
                                 <img src="./img/nextSong.svg" alt="" onClick={playNextSong}/>
                             </div>
@@ -231,6 +260,14 @@ const Songs = () => {
                                     step="0.01"
                                     value={volume}
                                     onChange={handleVolumeChange}
+                                />
+                            </div>
+                            <div className='downloadButton'>
+                                <img 
+                                    src="/img/downloadButton.svg" 
+                                    alt="Скачать"
+                                    onClick={() => downloadFile(currentSong.audio, currentSong.title + '.mp3')}
+                                    style={{ cursor: isDownloading ? 'wait' : 'pointer' }}
                                 />
                             </div>
                         </div>

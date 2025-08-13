@@ -1,11 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
 import styles from "../Multfilm/Multfilm.module.scss";
+import useDownload from "../../hooks/useDownload";
 
 const Minuses = () => {
 
     const url = 'https://api.multfilm.tatar/api/'
     const [imgSrc, setImgSrc] = useState('./img/oblozhki/songsBig.png');
+    
+    // Используем кастомный хук для скачивания файлов
+    const { downloadFile, isDownloading } = useDownload();
+    
     const roundAppearances = [
         {
             roundColor: '#FEB6DB',
@@ -143,28 +148,6 @@ const Minuses = () => {
         setIsPlaying(!isPlaying);
     };
 
-    const handleDownload = async (url, filename = 'file.mp3') => {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Network response was not ok');
-
-            const blob = await response.blob();
-            const blobUrl = window.URL.createObjectURL(blob);
-
-            const link = document.createElement('a');
-            link.href = blobUrl;
-            link.setAttribute('download', filename);
-            document.body.appendChild(link);
-            link.click();
-
-            // cleanup
-            link.remove();
-            window.URL.revokeObjectURL(blobUrl);
-        } catch (error) {
-            console.error('Download failed:', error);
-        }
-    };
-
     return (
         <>
             <div className={'pageWrapper'}>
@@ -183,7 +166,7 @@ const Minuses = () => {
                                 <div className={styles.minusItem} key={item.id}>
                                     <div
                                         className={styles.downloadMinus}
-                                        onClick={() => handleDownload(item.file, item.title + '.mp3')}
+                                        onClick={() => downloadFile(item.file, item.title + '.mp3')}
                                     >
                                         <img src="/img/minuses/downloadMinus.svg" alt="Скачать минус" />
                                     </div>

@@ -1719,13 +1719,17 @@ a {
 }
 
 .timeDisplay {
-  color: #00D1FF;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 58px;
+  padding: 8px 12px;
+  color: #4674AD;
   font-family: 'Ubuntu', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 22px; /* 122.222% */
   text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .controls {
@@ -1742,18 +1746,32 @@ a {
   cursor: pointer;
 }
 
+.downloadButton {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  padding: 9px;
+  min-width: 38px;
+  max-width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
 .volume {
   display: flex;
   align-items: center;
   column-gap: 8px;
-  width: 100%;
+  width: 15%;
   margin: 0;
   padding: 0;
-  max-width: 200px;
+  /*max-width: 200px;*/
 }
 
 .volumeControl {
-  width: 100px;
+  width: 100%;
   display: block;
 }
 
