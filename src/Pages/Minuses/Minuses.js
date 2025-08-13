@@ -36,6 +36,8 @@ const Minuses = () => {
     // Добавляем состояния для отслеживания времени и прогресса
     const [currentTime, setCurrentTime] = useState(0);
     const [progress, setProgress] = useState(0);
+    // Добавляем состояние для хранения полной длительности песни
+    const [duration, setDuration] = useState(0);
     const audioRef = useRef(null);
 
     const updateImage = () => {
@@ -79,20 +81,18 @@ const Minuses = () => {
         if (audioRef.current) {
             const audio = audioRef.current;
             
+            // Обработчик для получения длительности песни когда она загружается
+            const handleLoadedMetadata = () => {
+                setDuration(audio.duration);
+            };
+            
             // Обновляем время каждые 100мс для плавного прогресс-бара
             const updateTime = () => {
                 const current = audio.currentTime;
                 setCurrentTime(current);
-                // Рассчитываем прогресс от 0 до 100% за 15 секунд
-                setProgress((current / 15) * 100);
-                
-                // Останавливаем воспроизведение через 15 секунд
-                if (current >= 15) {
-                    audio.pause();
-                    setIsPlaying(false);
-                    setCurrentTime(0);
-                    setProgress(0);
-                    setCurrentSong(null);
+                // Рассчитываем прогресс от 0 до 100% на основе полной длительности песни
+                if (duration > 0) {
+                    setProgress((current / duration) * 100);
                 }
             };
 
@@ -104,15 +104,18 @@ const Minuses = () => {
                 setCurrentSong(null);
             };
 
+            // Добавляем слушатель для получения метаданных (включая длительность)
+            audio.addEventListener('loadedmetadata', handleLoadedMetadata);
             audio.addEventListener('timeupdate', updateTime);
             audio.addEventListener('ended', handleEnded);
 
             return () => {
+                audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
                 audio.removeEventListener('timeupdate', updateTime);
                 audio.removeEventListener('ended', handleEnded);
             };
         }
-    }, [currentSong]);
+    }, [currentSong, duration]);
 
     // Функция для запуска воспроизведения песни
     const playSong = (song) => {
@@ -126,6 +129,7 @@ const Minuses = () => {
         setCurrentSong(song);
         setCurrentTime(0);
         setProgress(0);
+        setDuration(0); // Сбрасываем длительность для новой песни
         setIsPlaying(true);
     };
 
