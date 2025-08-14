@@ -1131,6 +1131,10 @@ body {
 
 @media screen and (max-width: 1440px) {
 
+  .pageHeaderImage {
+    max-width: 1000px;
+  }
+
   .pageHeaderImage span {
     font-family: Ubuntu;
     font-weight: 700;
