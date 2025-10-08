@@ -23,36 +23,51 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        m[i].l = 1 * new Date();
-        (k = e.createElement(t)),
-          (a = e.getElementsByTagName(t)[0]),
-          (k.async = 1),
-          (k.src = r),
-          a.parentNode.insertBefore(k, a);
-      })(
-        window,
-        document,
-        "script",
-        "https://mc.yandex.ru/metrika/tag.js",
-        "ym"
-      );
+    <!-- Yandex.Metrika: скрипт для программ, которые читают HTML -->
+    <script
+      async
+      src="https://mc.yandex.ru/metrika/tag.js?id=104397259"
+    ></script>
 
-      ym(104397259, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true,
-        ecommerce: "dataLayer",
-      });
+    <!-- Инициализация со страховкой: если ym ещё не определён, попробуем через таймаут -->
+    <script type="text/javascript">
+      (function initYm() {
+        function doInit() {
+          try {
+            ym(104397259, "init", {
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true,
+              webvisor: true,
+              ecommerce: "dataLayer",
+            });
+          } catch (e) {
+            // если что-то пойдет не так — просто игнорируем ошибку
+            console && console.error && console.error("YM init error:", e);
+          }
+        }
+
+        if (typeof ym === "function") {
+          doInit();
+        } else {
+          // ждем загрузки tag.js (повтор каждые 50ms, максимум ~5 сек)
+          var tries = 0;
+          var t = setInterval(function () {
+            tries++;
+            if (typeof ym === "function") {
+              clearInterval(t);
+              doInit();
+            }
+            if (tries > 100) {
+              // 100 * 50ms = 5000ms
+              clearInterval(t);
+            }
+          }, 50);
+        }
+      })();
     </script>
+
+    <!-- noscript для сканеров и пользователей без JS -->
     <noscript>
       <div>
         <img
