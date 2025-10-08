@@ -113,6 +113,40 @@
       <img src="//counter.rambler.ru/top100.cnt?pid=7749268" alt="Топ-100" />
     </noscript>
     <!-- END Top100 (Kraken) Counter -->
+    <!--LiveInternet counter-->
+    <script>
+      new Image().src =
+        "https://counter.yadro.ru/hit?r" +
+        escape(document.referrer) +
+        (typeof screen == "undefined"
+          ? ""
+          : ";s" +
+            screen.width +
+            "*" +
+            screen.height +
+            "*" +
+            (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) +
+        ";u" +
+        escape(document.URL) +
+        ";h" +
+        escape(document.title.substring(0, 150)) +
+        ";" +
+        Math.random();
+    </script>
+    <!--/LiveInternet-->
+    <!--LiveInternet logo-->
+    <div style="opacity: 0; position: absolute; pointer-events: none">
+      <a href="https://www.liveinternet.ru/click" target="_blank"
+        ><img
+          src="https://counter.yadro.ru/logo?44.18"
+          title="LiveInternet"
+          alt=""
+          style="border: 0"
+          width="31"
+          height="31"
+      /></a>
+    </div>
+    <!--/LiveInternet-->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
