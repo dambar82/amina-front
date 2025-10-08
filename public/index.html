@@ -46,47 +46,39 @@
     </script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        m[i].l = 1 * new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-          if (document.scripts[j].src === r) {
-            return;
-          }
-        }
-        (k = e.createElement(t)),
-          (a = e.getElementsByTagName(t)[0]),
-          (k.async = 1),
-          (k.src = r),
-          a.parentNode.insertBefore(k, a);
-      })(
-        window,
-        document,
-        "script",
-        "https://mc.yandex.ru/metrika/tag.js?id=104538735",
-        "ym"
-      );
+      (function (w) {
+        if (typeof w.ym === "function") return;
+        w.ym = function () {
+          (w.ym.q = w.ym.q || []).push(arguments);
+        };
+        w.ym.l = +new Date();
+        w.__ym_test_stub_present = true;
+      })(window);
 
-      ym(104538735, "init", {
-        ssr: true,
-        clickmap: true,
-        ecommerce: "dataLayer",
-        accurateTrackBounce: true,
-        trackLinks: true,
-      });
+      try {
+        ym(104538735, "init", {
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true,
+          ecommerce: "dataLayer",
+        });
+      } catch (e) {
+        console && console.warn && console.warn("ym queue error:", e);
+      }
     </script>
-    <noscript
-      ><div>
+
+    <script async src="https://mc.yandex.ru/metrika/tag.js"></script>
+
+    <noscript>
+      <div>
         <img
           src="https://mc.yandex.ru/watch/104538735"
           style="position: absolute; left: -9999px"
           alt=""
-        /></div
-    ></noscript>
+        />
+      </div>
+    </noscript>
     <!-- /Yandex.Metrika counter -->
     <!-- Top100 (Kraken) Counter -->
     <script>
