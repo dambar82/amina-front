@@ -16,6 +16,11 @@ function App() {
     const location = useLocation();
 
     useEffect(() => {
+        // Отправляем хит в Яндекс.Метрику при смене роута
+        if (window.ym) {
+            window.ym(104397259, 'hit', window.location.href);
+        }
+
         // Логика изменения цвета фона в зависимости от маршрута
         switch (location.pathname) {
             case '/':
