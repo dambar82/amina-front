@@ -1,73 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Мультфильмы, песни, новости от Амины"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Amina</title>
+    <title>Amina — тестовый индекс (локальный)</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Включите JavaScript для корректной работы приложения.</noscript>
     <div id="root"></div>
 
-    <!-- Yandex.Metrika: скрипт для программ, которые читают HTML -->
+    <script type="text/javascript">
+      (function (w) {
+        if (typeof w.ym === "function") return; // если уже есть
+        w.ym = function () {
+          (w.ym.q = w.ym.q || []).push(arguments);
+        };
+        w.ym.l = +new Date();
+        w.__ym_test_stub_present = true;
+      })(window);
+
+      try {
+        ym(104397259, "init", {
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true,
+          ecommerce: "dataLayer",
+        });
+      } catch (e) {
+        // noop — в тестовом окружении ошибок не будет, но на всякий случай
+        console && console.warn && console.warn("ym queue error:", e);
+      }
+    </script>
+
+    <!-- Подключаем официальный tag.js (асинхронно). -->
     <script
       async
       src="https://mc.yandex.ru/metrika/tag.js?id=104397259"
     ></script>
 
-    <!-- Инициализация со страховкой: если ym ещё не определён, попробуем через таймаут -->
-    <script type="text/javascript">
-      (function initYm() {
-        function doInit() {
-          try {
-            ym(104397259, "init", {
-              clickmap: true,
-              trackLinks: true,
-              accurateTrackBounce: true,
-              webvisor: true,
-              ecommerce: "dataLayer",
-            });
-          } catch (e) {
-            // если что-то пойдет не так — просто игнорируем ошибку
-            console && console.error && console.error("YM init error:", e);
-          }
-        }
-
-        if (typeof ym === "function") {
-          doInit();
-        } else {
-          // ждем загрузки tag.js (повтор каждые 50ms, максимум ~5 сек)
-          var tries = 0;
-          var t = setInterval(function () {
-            tries++;
-            if (typeof ym === "function") {
-              clearInterval(t);
-              doInit();
-            }
-            if (tries > 100) {
-              // 100 * 50ms = 5000ms
-              clearInterval(t);
-            }
-          }, 50);
-        }
-      })();
-    </script>
-
-    <!-- noscript для сканеров и пользователей без JS -->
+    <!-- Носкрипт пиксель (для клиентов/сканеров, которые не выполняют JS) -->
     <noscript>
       <div>
         <img
@@ -77,6 +50,17 @@
         />
       </div>
     </noscript>
-    <!-- /Yandex.Metrika counter -->
+
+    <!-- Простой скрипт для быстрой проверки (не обязателен) -->
+    <script>
+      // Для отладки: через пару сотен миллисекунд проверим, что ym существует.
+      setTimeout(function () {
+        console.log("typeof ym ->", typeof window.ym);
+        // Если real tag.js загрузился и инициализировал счётчик, queue должен быть обработан.
+        if (window.ym && window.ym.q && window.ym.q.length) {
+          console.log("ym queue length:", window.ym.q.length);
+        }
+      }, 300);
+    </script>
   </body>
 </html>
