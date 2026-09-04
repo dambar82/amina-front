@@ -1,16 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
 import styles from './Multfilm.module.scss';
 
 const MultfilmPage = () => {
 
     const url = 'https://api.multfilm.tatar/api/'
+    const batchSize = 12;
 
     const [videos, setVideos] = useState([]);
+    const [visibleCount, setVisibleCount] = useState(batchSize);
     const [isLoading, setIsLoading] = useState(true);
     const [loadError, setLoadError] = useState('');
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [unavailableVideo, setUnavailableVideo] = useState(null);
+    const loadMoreRef = useRef(null);
 
     const [imgSrc, setImgSrc] = useState('./img/oblozhki/multfilmBig.png');
 
@@ -65,6 +68,7 @@ const MultfilmPage = () => {
         try {
             const response = await axios.get(`${url}amina/video`, {timeout: 15000});
             setVideos(Array.isArray(response.data?.data) ? response.data.data : []);
+            setVisibleCount(batchSize);
         } catch (error) {
             setLoadError('Мультфильмнарны йөкләп булмады. Кабатлап карагыз.');
         } finally {
@@ -75,6 +79,20 @@ const MultfilmPage = () => {
     useEffect(() => {
         getVideos();
     }, [])
+
+    useEffect(() => {
+        const target = loadMoreRef.current;
+        if (!target || visibleCount >= videos.length) return;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setVisibleCount((count) => Math.min(count + batchSize, videos.length));
+            }
+        }, {rootMargin: '300px 0px'});
+
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, [visibleCount, videos.length]);
 
     const [isScrolledHalf, setIsScrolledHalf] = useState(false);
 
@@ -126,7 +144,7 @@ const MultfilmPage = () => {
                     )}
                     <div className={'mulfilm_grid'}>
                         {
-                            videos.map((item, index) => (
+                            videos.slice(0, visibleCount).map((item, index) => (
                                 <div className={'videoBlock'} key={item.id ?? index} onClick={() => handleThumbnailClick(item)} role="button" tabIndex="0" onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') handleThumbnailClick(item) }}>
                                     <img src={item.preview} alt={item.name} className={'thumbnail'} loading="lazy" decoding="async" />
                                     <div className={'thumbnail_title'}>
@@ -136,11 +154,12 @@ const MultfilmPage = () => {
                             ))
                         }
                     </div>
+                    {visibleCount < videos.length && <div ref={loadMoreRef} aria-hidden="true" />}
                     {selectedVideo && (
                         <div className={'modal'} onClick={closeModal}>
                             <div className={'modalContent'}>
                                 <span className={'close'} onClick={closeModal}>&times;</span>
-                                <video controls onClick={(event) => event.stopPropagation()}>
+                                <video controls preload="none" onClick={(event) => event.stopPropagation()}>
                                     <source src={selectedVideo.video} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
