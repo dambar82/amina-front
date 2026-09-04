@@ -86,23 +86,11 @@ const Header = () => {
                                     <Link to='/multfilm'>
                                         <li className={`menuElement ${location.pathname === '/multfilm' ? `${styles.active} ${styles.active_multfilm}` : ''}`}>
                                             Мультфильмнар
-                                            <div className="appElement">
-                                                <div className="appElement_box">
-                                                    <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                                    <div className="appElement__txt">Бүлек эшләнә</div>
-                                                </div>
-                                            </div>
                                         </li>
                                     </Link>
                                     <Link to='/songs'>
                                         <li className={`menuElement ${location.pathname === '/songs' ? `${styles.active} ${styles.active_songs}` : ''}`}>
                                             Җырлар
-                                            <div className="appElement">
-                                                <div className="appElement_box">
-                                                    <div className="appElement__icon"><img src="/img/icon.svg" alt=""/></div>
-                                                    <div className="appElement__txt">Бүлек эшләнә</div>
-                                                </div>
-                                            </div>
                                         </li>
                                     </Link>
                                     <Link to='/songs_text'>

@@ -7,9 +7,10 @@ const MultfilmPage = () => {
     const url = 'https://api.multfilm.tatar/api/'
 
     const [videos, setVideos] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [loadError, setLoadError] = useState('');
     const [selectedVideo, setSelectedVideo] = useState(null);
-
-    const [videoDurations, setVideoDurations] = useState({});
+    const [unavailableVideo, setUnavailableVideo] = useState(null);
 
     const [imgSrc, setImgSrc] = useState('./img/oblozhki/multfilmBig.png');
 
@@ -45,32 +46,33 @@ const MultfilmPage = () => {
         };
     }, []);
 
-    const handleLoadedMetadata = (index, duration) => {
-        setVideoDurations((prevDurations) => ({
-            ...prevDurations,
-            [index]: formatDuration(duration),
-        }));
-    };
-
-    const formatDuration = (duration) => {
-        const minutes = Math.floor(duration / 60);
-        const seconds = Math.floor(duration % 60);
-        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    };
-
     const handleThumbnailClick = (video) => {
-        setSelectedVideo(video);
+        if (video.video) {
+            setSelectedVideo(video);
+        } else {
+            setUnavailableVideo(video);
+        }
     };
 
     const closeModal = () => {
         setSelectedVideo(null);
+        setUnavailableVideo(null);
+    };
+
+    const getVideos = async () => {
+        setIsLoading(true);
+        setLoadError('');
+        try {
+            const response = await axios.get(`${url}amina/video`, {timeout: 15000});
+            setVideos(Array.isArray(response.data?.data) ? response.data.data : []);
+        } catch (error) {
+            setLoadError('Мультфильмнарны йөкләп булмады. Кабатлап карагыз.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     useEffect(() => {
-        const getVideos = async () => {
-            const response = await axios.get(`${url}amina/video`);
-            setVideos(response.data.data);
-        }
         getVideos();
     }, [])
 
@@ -115,24 +117,20 @@ const MultfilmPage = () => {
                     <span>Мультфильмнар</span>
                 </div>
                 <div className={'pageContent'}>
+                    {isLoading && <div className="pageStatus" role="status">Мультфильмнар йөкләнә...</div>}
+                    {loadError && (
+                        <div className="pageStatus pageStatus_error" role="alert">
+                            <p>{loadError}</p>
+                            <button type="button" onClick={getVideos}>Кабат йөкләргә</button>
+                        </div>
+                    )}
                     <div className={'mulfilm_grid'}>
                         {
                             videos.map((item, index) => (
-                                <div className={'videoBlock'} key={index} onClick={() => handleThumbnailClick(item)}>
-                                    <img src={item.preview} alt={item.name} className={'thumbnail'} />
+                                <div className={'videoBlock'} key={item.id ?? index} onClick={() => handleThumbnailClick(item)} role="button" tabIndex="0" onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') handleThumbnailClick(item) }}>
+                                    <img src={item.preview} alt={item.name} className={'thumbnail'} loading="lazy" decoding="async" />
                                     <div className={'thumbnail_title'}>
                                         <p>{item.name}</p>
-                                        <video
-                                            style={{ display: 'none' }} // скрываем видео
-                                            onLoadedMetadata={(e) => handleLoadedMetadata(index, e.target.duration)}
-                                        >
-                                            <source src={item.video} type="video/mp4" />
-                                        </video>
-
-                                        {/* Display duration */}
-                                        {/*{videoDurations[index] && (*/}
-                                        {/*    <p className="duration">{videoDurations[index]}</p>*/}
-                                        {/*)}*/}
                                     </div>
                                 </div>
                             ))
@@ -146,6 +144,15 @@ const MultfilmPage = () => {
                                     <source src={selectedVideo.video} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
+                            </div>
+                        </div>
+                    )}
+                    {unavailableVideo && (
+                        <div className={'modal'} onClick={closeModal} role="dialog" aria-modal="true" aria-label="Мультфильм әлегә әзер түгел">
+                            <div className={'modalContent modalContent_message'} onClick={(event) => event.stopPropagation()}>
+                                <button className={'close'} type="button" onClick={closeModal} aria-label="Ябарга">&times;</button>
+                                <p><strong>{unavailableVideo.name}</strong></p>
+                                <p>Бу мультфильм әлегә әзер түгел.</p>
                             </div>
                         </div>
                     )}
