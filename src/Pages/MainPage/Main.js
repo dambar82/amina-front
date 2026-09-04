@@ -41,6 +41,7 @@ const Main = () => {
     return (
         <>
             <div className={'mainContent'}>
+                <h1 className="visuallyHidden">Әминә белән татар телен өйрәнәбез</h1>
                 <div className={'mainContent_blockPink'}>
                     <div className={'amina_pic'}>
                         <img src="./img/AminaPic.png" alt=""/>
@@ -97,7 +98,7 @@ const Main = () => {
                                         <img src="/img/whiteNota.svg" alt=""/>
                                     </div>
                                     <div className={styles.songBLock_content}>
-                                        <h1>{song.title}</h1>
+                                        <h2>{song.title}</h2>
                                         <div className={`${styles.text}`}
                                              dangerouslySetInnerHTML={{__html: song.content}}
                                         ></div>

@@ -1,4 +1,4 @@
-h1 {
+h1, h2 {
   margin: 0 !important;
 }
 
@@ -47,7 +47,7 @@ h1 {
     flex-direction: column;
     row-gap: 16px;
 
-    h1 {
+    h2 {
       font-family: Ubuntu;
       font-weight: 500;
       font-size: 32px;

@@ -114,7 +114,7 @@ const MultfilmPage = () => {
                 }
                 <div className={'pageHeaderImage'}>
                     <img src={imgSrc} alt=""/>
-                    <span>Мультфильмнар</span>
+                    <h1>Мультфильмнар</h1>
                 </div>
                 <div className={'pageContent'}>
                     {isLoading && <div className="pageStatus" role="status">Мультфильмнар йөкләнә...</div>}

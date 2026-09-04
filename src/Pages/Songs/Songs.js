@@ -194,7 +194,7 @@ const Songs = () => {
                 }
                 <div className={'pageHeaderImage'}>
                     <img src={imgSrc} alt=""/>
-                    <span>Җырлар</span>
+                    <h1>Җырлар</h1>
                 </div>
                 <div className={'pageContent'}>
                     <div className={'songsContent'}>

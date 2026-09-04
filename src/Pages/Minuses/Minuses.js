@@ -153,7 +153,7 @@ const Minuses = () => {
             <div className={'pageWrapper'}>
                 <div className={'pageHeaderImage'}>
                     <img src={imgSrc} alt=""/>
-                    <span>Минуслар</span>
+                    <h1>Минуслар</h1>
                 </div>
                 <div className={styles.songsMinusesContent}>
                     {

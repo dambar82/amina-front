@@ -67,6 +67,7 @@ const News = () => {
         <div className={'pageWrapper'}>
             <div className={'pageHeaderImage'}>
                 <img src={imgSrc} alt=""/>
+                <h1>Яңалыклар</h1>
             </div>
             <div className={'pageContent'}>
                 <div className={'newsContent'}>
@@ -82,7 +83,7 @@ const News = () => {
                                 <div className={'newsItem_info'}>
                                     {newsItem.content[0].image &&
                                         <div className={'newsItem_image'}>
-                                            <img src={newsItem.content[0].image} alt=""/>
+                                            <img src={newsItem.content[0].image} alt="" loading="lazy" decoding="async"/>
                                         </div>
                                     }
                                     <div className={'newsItem_text'}>

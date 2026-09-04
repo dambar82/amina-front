@@ -96,7 +96,7 @@ const SongsText = () => {
                 }
                 <div className={'pageHeaderImage'}>
                     <img src={imgSrc} alt=""/>
-                    <span>Җыр сүзләре</span>
+                    <h1>Җыр сүзләре</h1>
                 </div>
                 <div className={'pageContent'}>
                     <div className={styles.songsText}>
@@ -110,7 +110,7 @@ const SongsText = () => {
                                         <img src="/img/whiteNota.svg" alt=""/>
                                     </div>
                                     <div className={styles.song_content}>
-                                        <h1>{song.title}</h1>
+                                        <h2>{song.title}</h2>
                                         <div className={`${styles.text} ${expandedSongs[song.id] ? styles.expanded : ""}`}
                                              dangerouslySetInnerHTML={{__html: song.content}}
                                         ></div>
@@ -121,7 +121,7 @@ const SongsText = () => {
                                         </div>
                                     </div>
                                     <div className={styles.song_pic}>
-                                        <img src={song.image} alt=""/>
+                                        {song.image && <img src={song.image} alt="" loading="lazy" decoding="async"/>}
                                     </div>
                                 </div>
                             ))
