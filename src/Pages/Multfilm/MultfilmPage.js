@@ -143,7 +143,7 @@ const MultfilmPage = () => {
                             <div className={'modalContent'}>
                                 <span className={'close'} onClick={closeModal}>&times;</span>
                                 <video controls onClick={(event) => event.stopPropagation()}>
-                                    <source src={selectedVideo.link} type="video/mp4" />
+                                    <source src={selectedVideo.video} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
