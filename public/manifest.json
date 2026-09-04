@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Әминә",
+  "name": "Әминә — татар телен өйрәнәбез",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,10 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "lang": "tt",
+  "description": "Балалар өчен татарча җырлар һәм мультфильмнар",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#b8a3ff",
   "background_color": "#ffffff"
 }

@@ -4,17 +4,68 @@ import Main from "./Pages/MainPage/Main";
 import MultfilmPage from "./Pages/Multfilm/MultfilmPage";
 import { useEffect } from "react";
 import News from "./Pages/News";
-import Book from "./Pages/Book";
 import Songs from "./Pages/Songs/Songs";
-import Reviews from "./Pages/Reviews/Reviews";
 import About from "./Pages/AboutPage/About";
 import SongsText from "./Pages/SongsText/SongsText";
 import Minuses from "./Pages/Minuses/Minuses";
+
+const SITE_URL = "https://amina.tatar";
+const SEO_BY_PATH = {
+  "/": {
+    title: "Әминә белән татар телен өйрәнәбез | Җырлар һәм мультфильмнар",
+    description: "Әминә белән татар телен җырлар, мультфильмнар һәм кызыклы материаллар аша өйрәнегез. Балалар өчен бушлай белем бирү проекты.",
+  },
+  "/multfilm": {
+    title: "Татарча мультфильмнар | Әминә",
+    description: "Балалар өчен Әминә татарча мультфильмнары. Татар телен кызыклы сюжетлар һәм җырлар аша өйрәнү.",
+  },
+  "/songs": {
+    title: "Балалар өчен татарча җырлар | Әминә",
+    description: "Әминә белән татарча балалар җырларын тыңлагыз һәм татар телен җиңел өйрәнегез.",
+  },
+  "/songs_text": {
+    title: "Татарча җыр сүзләре | Әминә",
+    description: "Әминә проекты җырларының татарча текстлары. Җырлагыз, укыгыз һәм яңа сүзләр өйрәнегез.",
+  },
+  "/songs_minuses": {
+    title: "Татарча җырларның минусовкалары | Әминә",
+    description: "Балалар өчен татарча җырларның минусовкаларын тыңлагыз һәм йөкләгез.",
+  },
+  "/news": {
+    title: "Яңалыклар | Әминә",
+    description: "Әминә татар теле проектының соңгы яңалыклары, чаралары һәм яңа материаллары.",
+  },
+  "/about": {
+    title: "Әминә проекты турында",
+    description: "Балаларга татар телен җырлар һәм мультфильмнар аша өйрәтүче Әминә проекты турында.",
+  },
+  "/method": {
+    title: "Әминә проектының методикасы",
+    description: "Әминә белем бирү проектында татар телен балаларга өйрәтү методикасы.",
+  },
+};
+
+const setMeta = (selector, attribute, value) => {
+  const element = document.querySelector(selector);
+  if (element) element.setAttribute(attribute, value);
+};
 
 function App() {
   const location = useLocation();
 
   useEffect(() => {
+    const seo = SEO_BY_PATH[location.pathname] || SEO_BY_PATH["/"];
+    const canonicalUrl = `${SITE_URL}${location.pathname === "/" ? "/" : location.pathname}`;
+    document.title = seo.title;
+    setMeta('meta[name="description"]', "content", seo.description);
+    setMeta('meta[property="og:title"]', "content", seo.title);
+    setMeta('meta[property="og:description"]', "content", seo.description);
+    setMeta('meta[property="og:url"]', "content", canonicalUrl);
+    setMeta('meta[name="twitter:title"]', "content", seo.title);
+    setMeta('meta[name="twitter:description"]', "content", seo.description);
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", canonicalUrl);
+
     // Отправляем хит в Яндекс.Метрику при смене роута
     if (window.ym) {
       window.ym(104538735, "hit", window.location.href);
