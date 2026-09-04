@@ -66,9 +66,17 @@ const MultfilmPage = () => {
         setIsLoading(true);
         setLoadError('');
         try {
-            const response = await axios.get(`${url}amina/video`, {timeout: 15000});
-            setVideos(Array.isArray(response.data?.data) ? response.data.data : []);
-            setVisibleCount(batchSize);
+            for (let attempt = 1; attempt <= 3; attempt += 1) {
+                try {
+                    const response = await axios.get(`${url}amina/video`, {timeout: 15000});
+                    setVideos(Array.isArray(response.data?.data) ? response.data.data : []);
+                    setVisibleCount(batchSize);
+                    return;
+                } catch (error) {
+                    if (attempt === 3) throw error;
+                    await new Promise((resolve) => setTimeout(resolve, attempt * 1000));
+                }
+            }
         } catch (error) {
             setLoadError('Мультфильмнарны йөкләп булмады. Кабатлап карагыз.');
         } finally {
@@ -159,7 +167,7 @@ const MultfilmPage = () => {
                         <div className={'modal'} onClick={closeModal}>
                             <div className={'modalContent'}>
                                 <span className={'close'} onClick={closeModal}>&times;</span>
-                                <video controls preload="none" onClick={(event) => event.stopPropagation()}>
+                                <video controls preload="metadata" poster={selectedVideo.preview} onClick={(event) => event.stopPropagation()}>
                                     <source src={selectedVideo.video} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
