@@ -54,6 +54,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    let mainBackgroundObserver;
     const seo = SEO_BY_PATH[location.pathname] || SEO_BY_PATH["/"];
     const canonicalUrl = `${SITE_URL}${location.pathname === "/" ? "/" : location.pathname}`;
     document.title = seo.title;
@@ -75,9 +76,22 @@ function App() {
     switch (location.pathname) {
       case "/":
         document.body.style.backgroundImage = `url('./img/MainBackground.jpg')`;
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "center";
         document.body.style.backgroundRepeat = "no-repeat";
+        // Keep the original background proportions when the support section adds height.
+        const supportBlock = document.querySelector('[data-main-support]');
+        const updateMainBackground = () => {
+          const bodyBounds = document.body.getBoundingClientRect();
+          const originalHeight = bodyBounds.height - (supportBlock?.getBoundingClientRect().height || 0);
+          const imageRatio = 3840 / 10132;
+          const backgroundWidth = Math.max(bodyBounds.width, originalHeight * imageRatio);
+          const backgroundHeight = backgroundWidth / imageRatio;
+          document.body.style.backgroundSize = `${backgroundWidth}px ${backgroundHeight}px`;
+          document.body.style.backgroundPosition = `center ${(originalHeight - backgroundHeight) / 2}px`;
+        };
+        mainBackgroundObserver = new ResizeObserver(updateMainBackground);
+        mainBackgroundObserver.observe(document.body);
+        if (supportBlock) mainBackgroundObserver.observe(supportBlock);
+        updateMainBackground();
         const mobileMenu = document.querySelector(".mobileMenu");
         if (mobileMenu) {
           mobileMenu.style.backgroundColor = "#FE89FF"; // Задайте нужный цвет
@@ -146,6 +160,7 @@ function App() {
 
     // Очистка при размонтировании компонента (восстановление фона по умолчанию)
     return () => {
+      mainBackgroundObserver?.disconnect();
       document.body.style.background = "#fff";
     };
   }, [location.pathname]);

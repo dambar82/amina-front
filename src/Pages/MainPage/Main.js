@@ -141,7 +141,7 @@ const Main = () => {
                     </div>
                 </div>
                 <div className={styles.bottomBlock}>
-                    <section className={styles.supportBlock} aria-label="Поддержка проекта">
+                    <section className={styles.supportBlock} data-main-support aria-label="Поддержка проекта">
                         <img src="/img/support-logo.png" alt="И туган тел, и матур тел"/>
                         <p lang="ru">
                             Проект реализован при поддержке Комиссии при Раисе Республики Татарстан
