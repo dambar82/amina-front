@@ -129,7 +129,6 @@ const Main = () => {
                     <div className={styles.blockPurple_content}>
                         <div className={styles.image}>
                             <img src="/img/aboutPic.jpg" alt=""/>
-                            <img className={styles.imageLogo} src="/img/Asset 4@2x.png" alt="И туган тел, и матур тел"/>
                         </div>
                         <div className={styles.textBlock}>
                             <p>
@@ -138,6 +137,7 @@ const Main = () => {
                             <Link to='/about'>
                                 <button className={`${reviewsStyles.button} ${reviewsStyles.button_pink}`}>Тулырак</button>
                             </Link>
+                            <img className={styles.imageLogo} src="/img/Asset 4@2x.png" alt="И туган тел, и матур тел"/>
                         </div>
                     </div>
                 </div>

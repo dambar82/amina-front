@@ -106,7 +106,6 @@
   column-gap: 140px;
 
   .image {
-    position: relative;
     width: 620px;
     height: 520px;
     border-radius: 24px;
@@ -118,14 +117,13 @@
       object-fit: cover;
     }
 
-    img.imageLogo {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      width: 162px;
-      height: auto;
-      object-fit: contain;
-    }
+  }
+
+  .imageLogo {
+    width: 162px;
+    height: 162px;
+    object-fit: contain;
+    align-self: flex-start;
   }
 
   .textBlock {
@@ -171,6 +169,10 @@
 
       a {
         margin: 0 auto !important;
+      }
+
+      .imageLogo {
+        align-self: center;
       }
     }
 
