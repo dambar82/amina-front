@@ -106,6 +106,7 @@
   column-gap: 140px;
 
   .image {
+    position: relative;
     width: 620px;
     height: 520px;
     border-radius: 24px;
@@ -115,6 +116,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    img.imageLogo {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      width: clamp(56px, 18%, 81px);
+      height: auto;
+      object-fit: contain;
     }
   }
 
