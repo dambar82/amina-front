@@ -176,7 +176,7 @@
 .bottomBlock {
   position: relative;
   width: 100%;
-  background-color: #9499FF;
+  background: linear-gradient(to right, #9499FF, #739BFF);
 
   &::before {
     content: '';
@@ -185,7 +185,8 @@
     left: 0;
     width: 100%;
     height: 10vh;
-    background: linear-gradient(to bottom, rgba(148, 153, 255, 0), #9499FF 60%);
+    background: inherit;
+    mask-image: linear-gradient(to bottom, transparent, #000 60%);
     pointer-events: none;
   }
 }
